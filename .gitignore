@@ -1,0 +1,4 @@
+venv
+dist
+build
+*.py[co]

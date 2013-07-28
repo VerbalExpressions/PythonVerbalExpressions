@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 import unittest
-from verbal_expressions import VerEx
+from verbalexpressions import VerEx
 import re
 
 class VerExTest(unittest.TestCase):
@@ -74,7 +74,7 @@ class VerExTest(unittest.TestCase):
         
     def test_tab_true(self):
         self.exp = self.v.start_of_line().anything().tab().end_of_line().regex()
-        self.assertRegexpMatches('One tab only    ', self.exp, 'No tab here!')
+        self.assertRegexpMatches('One tab only	', self.exp, 'No tab here!')
         
     def test_tab_false(self):
         self.exp = self.v.start_of_line().anything().tab().end_of_line().regex()
