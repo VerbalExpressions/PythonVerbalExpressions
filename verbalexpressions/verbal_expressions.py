@@ -31,6 +31,9 @@ class VerEx(object):
         regex = self.regex()
         return getattr(regex, attr)
 
+    def __str__(self):
+        return self.s
+
     def add(self, value):
         self.s += value
         return self
