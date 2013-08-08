@@ -20,7 +20,7 @@ class VerEx(object):
     No other tricks.
 
     And any string you inserted will be automatically grouped
-    excepte `tab` and `add`.
+    except `tab` and `add`.
     '''
     def __init__(self):
         self.s = ''
