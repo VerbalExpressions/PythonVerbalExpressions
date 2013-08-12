@@ -80,7 +80,7 @@ class VerEx(object):
     any_of = any
 
     def line_break(self):
-        return self.add("(\\n|(\\r\\n))")
+        return self.add(r"(\n|(\r\n))")
     br = line_break
 
     @re_escape
@@ -89,10 +89,10 @@ class VerEx(object):
         return self.add("([" + ''.join(['-'.join(i) for i in from_tos]) + "])")
 
     def tab(self):
-        return self.add('\\t')
+        return self.add(r'\t')
 
     def word(self):
-        return self.add("(\\w+)")
+        return self.add(r"(\w+)")
 
     def OR(self, value=None):
         ''' `or` is a python keyword so we use `OR` instead. '''
