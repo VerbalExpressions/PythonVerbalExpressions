@@ -94,6 +94,12 @@ class VerEx(object):
     def word(self):
         return self.add(r"(\w+)")
 
+    def number(self):
+        return self.add(r"([1-9]\d*)")
+
+    def one_character(self):
+        return self.add(r"(.)")
+
     def OR(self, value=None):
         ''' `or` is a python keyword so we use `OR` instead. '''
         self.add("|")
