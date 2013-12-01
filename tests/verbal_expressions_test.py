@@ -134,4 +134,4 @@ class VerExTest(unittest.TestCase):
 
     def test_should_match_url(self):
         self.exp = self.v.start_of_line().then('http').maybe('s').then('://').maybe('www.').word().then('.').word().maybe('/').end_of_line().regex()
-        self.assertRegexpMatches('https://www.google.com/', self.exp, 'Not a valid email')
+        self.assertRegexpMatches('https://www.google.com/', self.exp, 'Not a valid url')
