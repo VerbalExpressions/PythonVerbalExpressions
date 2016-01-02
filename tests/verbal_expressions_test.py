@@ -135,3 +135,21 @@ class VerExTest(unittest.TestCase):
     def test_should_match_url(self):
         self.exp = self.v.start_of_line().then('http').maybe('s').then('://').maybe('www.').word().then('.').word().maybe('/').end_of_line().regex()
         self.assertRegexpMatches('https://www.google.com/', self.exp, 'Not a valid email')
+        
+    def test_should_find_number(self):
+        self.exp = self.v.start_of_line().number().end_of_line().regex()
+        self.assertRegexpMatches('123', self.exp, 'Number not found')
+        
+    def test_word_should_find_named_groups(self):
+        name = "Linus Torvalds"
+        self.exp = self.v.start_of_line().word(name='first_name').then(' ').word(name='last_name').end_of_line().regex()
+        match = self.exp.match(name)
+        self.assertIsNotNone(match)
+        self.assertEquals(match.group('first_name'), 'Linus')
+        self.assertEquals(match.group('last_name'), 'Torvalds')
+    
+    def test_number_should_find_named_groups(self):
+        self.exp = self.v.start_of_line().number('number').end_of_line().regex()
+        match = self.exp.match('123')
+        self.assertIsNotNone(match, self.exp.pattern)
+        self.assertEquals(match.group('number'), '123')

@@ -2,11 +2,16 @@ import re
 
 
 def re_escape(fn):
-    def arg_escaped(this, *args):
+    def arg_escaped(this, *args, **kwargs):
         t = [isinstance(a, VerEx) and a.s or re.escape(str(a)) for a in args]
-        return fn(this, *t)
+        return fn(this, *t, **kwargs)
     return arg_escaped
 
+    
+def group(val, name=None):
+    prefix = '?P<{0}>'.format(name) if name else ''
+    return '(' + prefix + val + ')'
+    
 
 class VerEx(object):
     '''
@@ -50,49 +55,52 @@ class VerEx(object):
 
     # ---------------------------------------------
 
-    def anything(self):
-        return self.add('(.*)')
+    def anything(self, name=None):
+        return self.add(group('.*', name))
 
     @re_escape
     def anything_but(self, value):
-        return self.add('([^' + value + ']*)')
+        return self.add(group('[^' + value + ']*'))
 
     def end_of_line(self):
         return self.add('$')
 
     @re_escape
     def maybe(self, value):
-        return self.add("(" + value + ")?")
+        return self.add(group(value) + "?")
 
     def start_of_line(self):
         return self.add('^')
 
     @re_escape
     def find(self, value):
-        return self.add('(' + value + ')')
+        return self.add(group(value))
     then = find
 
     # special characters and groups
 
     @re_escape
     def any(self, value):
-        return self.add("([" + value + "])")
+        return self.add(group("[" + value + "]"))
     any_of = any
 
     def line_break(self):
-        return self.add(r"(\n|(\r\n))")
+        return self.add(group(r"\n|(\r\n)"))
     br = line_break
 
     @re_escape
     def range(self, *args):
         from_tos = [args[i:i+2] for i in range(0, len(args), 2)]
-        return self.add("([" + ''.join(['-'.join(i) for i in from_tos]) + "])")
+        return self.add(group("[" + ''.join(['-'.join(i) for i in from_tos]) + "]"))
 
     def tab(self):
         return self.add(r'\t')
 
-    def word(self):
-        return self.add(r"(\w+)")
+    def word(self, name=None):
+        return self.add(group(r"\w+", name))
+        
+    def number(self, name=None):
+        return self.add(group(r"\d+", name))
 
     def OR(self, value=None):
         ''' `or` is a python keyword so we use `OR` instead. '''

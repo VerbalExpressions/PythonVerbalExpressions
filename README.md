@@ -54,6 +54,21 @@ regexp = expression.compile()
 result_re = regexp.sub('duck', replace_me)
 print result_re
 ```
+### Using named groups
+```python
+name = "Linus Torvalds"
+expression = VerEx()
+            .start_of_line()
+            .word(name='first_name')
+            .then(' ')
+            .word(name='last_name')
+            .end_of_line()
+            .regex()
+match = self.exp.match(name)
+
+print(match.group('first_name'))  # Linus
+print(match.group('last_name'))  # Torvalds
+```
 ### Shorthand for string replace
 ```python
 result = VerEx().find('red').replace('We have a red house', 'blue')
