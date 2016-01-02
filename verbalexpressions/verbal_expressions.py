@@ -73,7 +73,7 @@ class VerEx(object):
         return self.add('^')
 
     @re_escape
-    def find(self, value):        
+    def find(self, value):
         return self.add(group(value))
     then = find
 
