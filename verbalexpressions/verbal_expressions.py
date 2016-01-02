@@ -73,8 +73,8 @@ class VerEx(object):
         return self.add('^')
 
     @re_escape
-    def find(self, value, name=None):        
-        return self.add(group(value, name))
+    def find(self, value):        
+        return self.add(group(value))
     then = find
 
     # special characters and groups
@@ -98,6 +98,9 @@ class VerEx(object):
 
     def word(self, name=None):
         return self.add(group(r"\w+", name))
+        
+    def number(self, name=None):
+        return self.add(group(r"\d+", name))
 
     def OR(self, value=None):
         ''' `or` is a python keyword so we use `OR` instead. '''
