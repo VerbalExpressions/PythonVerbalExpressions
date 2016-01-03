@@ -34,8 +34,11 @@ class VerEx(object):
     def __str__(self):
         return ''.join(self.s)
 
-    def add(self, *args):
-        self.s.extend(list(args))
+    def add(self, value):
+        if isinstance(value, list):
+            self.s.extend(value)
+        else:
+            self.s.append(value)
         return self
 
     def regex(self):
@@ -55,28 +58,28 @@ class VerEx(object):
 
     @re_escape
     def anything_but(self, value):
-        return self.add('([^', value, ']*)')
+        return self.add('([^%s]*)' % value)
 
     def end_of_line(self):
         return self.add('$')
 
     @re_escape
     def maybe(self, value):
-        return self.add("(", value, ")?")
+        return self.add("(%s)?" % value)
 
     def start_of_line(self):
         return self.add('^')
 
     @re_escape
     def find(self, value):
-        return self.add('(', value, ')')
+        return self.add('(%s)' % value)
     then = find
 
     # special characters and groups
 
     @re_escape
     def any(self, value):
-        return self.add("([", value, "])")
+        return self.add('([%s])' % value)
     any_of = any
 
     def line_break(self):
@@ -86,7 +89,7 @@ class VerEx(object):
     @re_escape
     def range(self, *args):
         from_tos = [args[i:i+2] for i in range(0, len(args), 2)]
-        return self.add("([", ''.join(['-'.join(i) for i in from_tos]), "])")
+        return self.add("([%s])" % ''.join(['-'.join(i) for i in from_tos]))
 
     def tab(self):
         return self.add(r'\t')
