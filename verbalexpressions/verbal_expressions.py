@@ -23,7 +23,7 @@ class VerEx(object):
     except `tab` and `add`.
     '''
     def __init__(self):
-        self.s = ''
+        self.s = []
         self.modifiers = {'I': 0, 'M': 0}
 
     def __getattr__(self, attr):
@@ -32,20 +32,23 @@ class VerEx(object):
         return getattr(regex, attr)
 
     def __str__(self):
-        return self.s
+        return ''.join(self.s)
 
     def add(self, value):
-        self.s += value
+        if isinstance(value, list):
+            self.s.extend(value)
+        else:
+            self.s.append(value)
         return self
 
     def regex(self):
         ''' get a regular expression object. '''
-        return re.compile(self.s, self.modifiers['I'] | self.modifiers['M'])
+        return re.compile(str(self), self.modifiers['I'] | self.modifiers['M'])
     compile = regex
 
     def source(self):
         ''' return the raw string'''
-        return self.s
+        return str(self)
     raw = value = source
 
     # ---------------------------------------------
@@ -55,28 +58,28 @@ class VerEx(object):
 
     @re_escape
     def anything_but(self, value):
-        return self.add('([^' + value + ']*)')
+        return self.add('([^%s]*)' % value)
 
     def end_of_line(self):
         return self.add('$')
 
     @re_escape
     def maybe(self, value):
-        return self.add("(" + value + ")?")
+        return self.add("(%s)?" % value)
 
     def start_of_line(self):
         return self.add('^')
 
     @re_escape
     def find(self, value):
-        return self.add('(' + value + ')')
+        return self.add('(%s)' % value)
     then = find
 
     # special characters and groups
 
     @re_escape
     def any(self, value):
-        return self.add("([" + value + "])")
+        return self.add('([%s])' % value)
     any_of = any
 
     def line_break(self):
@@ -86,7 +89,7 @@ class VerEx(object):
     @re_escape
     def range(self, *args):
         from_tos = [args[i:i+2] for i in range(0, len(args), 2)]
-        return self.add("([" + ''.join(['-'.join(i) for i in from_tos]) + "])")
+        return self.add("([%s])" % ''.join(['-'.join(i) for i in from_tos]))
 
     def tab(self):
         return self.add(r'\t')
