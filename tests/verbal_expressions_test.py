@@ -29,6 +29,9 @@ class VerExTest(unittest.TestCase):
     def test_should_render_verex_as_string(self):
         self.assertEqual(str(self.v.add('^$')), '^$')
 
+    def test_should_render_verex_list_as_string(self):
+        self.assertEqual(str(self.v.add(['^', '[0-9]', '$'])), '^[0-9]$')
+
     def test_should_match_characters_in_range(self):
         self.exp = self.v.start_of_line().range('a', 'c').regex()
         for character in ['a', 'b', 'c']:
