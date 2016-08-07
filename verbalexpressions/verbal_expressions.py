@@ -1,4 +1,5 @@
 import re
+from sys import version_info
 
 
 def re_escape(fn):
@@ -9,7 +10,7 @@ def re_escape(fn):
 
 
 class VerEx(object):
-    '''
+    """
     --- VerbalExpressions class ---
     the following methods behave different from the original js lib!
 
@@ -21,13 +22,14 @@ class VerEx(object):
 
     And any string you inserted will be automatically grouped
     except `tab` and `add`.
-    '''
+    """
+
     def __init__(self):
         self.s = []
-        self.modifiers = {'I': 0, 'M': 0}
+        self.modifiers = {'I': 0, 'M': 0, 'A': 0}
 
     def __getattr__(self, attr):
-        ''' any other function will be sent to the regex object '''
+        """ any other function will be sent to the regex object """
         regex = self.regex()
         return getattr(regex, attr)
 
@@ -42,12 +44,12 @@ class VerEx(object):
         return self
 
     def regex(self):
-        ''' get a regular expression object. '''
-        return re.compile(str(self), self.modifiers['I'] | self.modifiers['M'])
+        """ get a regular expression object. """
+        return re.compile(str(self), self.modifiers['I'] | self.modifiers['M'] | self.modifiers['A'])
     compile = regex
 
     def source(self):
-        ''' return the raw string'''
+        """ return the raw string"""
         return str(self)
     raw = value = source
 
@@ -58,28 +60,41 @@ class VerEx(object):
 
     @re_escape
     def anything_but(self, value):
-        return self.add('([^%s]*)' % value)
+        if version_info > (3, 0):
+            return self.add('([^{}]*)'.format(value))
+        else:
+            return self.add('([^%s]*)' % value)
+
 
     def end_of_line(self):
         return self.add('$')
 
     @re_escape
     def maybe(self, value):
-        return self.add("(%s)?" % value)
+        if version_info > (3, 0):
+            return self.add("({})?".format(value))
+        else:
+            return self.add("(%s)?" % value)
 
     def start_of_line(self):
         return self.add('^')
 
     @re_escape
     def find(self, value):
-        return self.add('(%s)' % value)
+        if version_info > (3, 0):
+            return self.add('({})'.format(value))
+        else:
+            return self.add('(%s)' % value)
     then = find
 
     # special characters and groups
 
     @re_escape
     def any(self, value):
-        return self.add('([%s])' % value)
+        if version_info > (3, 0):
+            return self.add('([{}])'.format(value))
+        else:
+            return self.add('([%s])' % value)
     any_of = any
 
     def line_break(self):
@@ -89,7 +104,10 @@ class VerEx(object):
     @re_escape
     def range(self, *args):
         from_tos = [args[i:i+2] for i in range(0, len(args), 2)]
-        return self.add("([%s])" % ''.join(['-'.join(i) for i in from_tos]))
+        if version_info > (3, 0):
+            return self.add("([{}])".format(''.join(['-'.join(i) for i in from_tos])))
+        else:
+            return self.add("([%s])" % ''.join(['-'.join(i) for i in from_tos]))
 
     def tab(self):
         return self.add(r'\t')
@@ -98,12 +116,12 @@ class VerEx(object):
         return self.add(r"(\w+)")
 
     def OR(self, value=None):
-        ''' `or` is a python keyword so we use `OR` instead. '''
+        """ `or` is a python keyword so we use `OR` instead. """
         self.add("|")
         return self.find(value) if value else self
 
-    def replace(self, string, repl):
-        return self.sub(repl, string)
+    def replace(self, string, replacement):
+        return self.sub(replacement, string)
 
     # --------------- modifiers ------------------------
 
@@ -116,4 +134,12 @@ class VerEx(object):
 
     def search_one_line(self, value=False):
         self.modifiers['M'] = re.M if value else 0
+        return self
+
+    def with_ascii(self, value=False):
+        """
+        re defaults to unicode in python 3.5, to replicate 2.7 behavior set with_ascii = True
+        :param value: Boolean, sets adds re.ASCII flag to compile function
+        """
+        self.modifiers['A'] = re.A if value else 0
         return self
