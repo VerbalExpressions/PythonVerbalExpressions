@@ -1,4 +1,4 @@
-PythonVerbalExpressions
+PythonVerbalExpressions [![Build Status](https://travis-ci.org/VerbalExpressions/PythonVerbalExpressions.svg?branch=master)](https://travis-ci.org/VerbalExpressions/PythonVerbalExpressions)
 =======================
 
 ## Installation
