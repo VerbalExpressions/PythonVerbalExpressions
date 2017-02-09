@@ -8,14 +8,12 @@ class VerExTest(unittest.TestCase):
     '''
         Tests for verbal_expressions.py
     '''
-    def __init__(self):
-    	unittest.TestCase.__init__(self)
-    	if sys.version_info[0] < 3:
-    		self.assertRegex = self.assertRegexpMatches
-    		self.assertNotRegex = self.assertNotRegexpMatches
-    
+        
     def setUp(self):
         self.v = VerEx()
+        if sys.version_info[0] < 3:
+    		self.assertRegex = self.assertRegexpMatches
+    		self.assertNotRegex = self.assertNotRegexpMatches
 
     def tearDown(self):
         self.v = None
