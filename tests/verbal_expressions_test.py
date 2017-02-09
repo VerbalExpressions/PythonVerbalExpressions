@@ -2,12 +2,18 @@
 import unittest
 from verbalexpressions import VerEx
 import re
+import sys
 
 class VerExTest(unittest.TestCase):
     '''
         Tests for verbal_expressions.py
     '''
-
+    def __init__(self):
+    	unittest.TestCase.__init__(self)
+    	if sys.version_info[0] < 3:
+    		self.assertRegex = self.assertRegexpMatches
+    		self.assertNotRegex = self.assertNotRegexpMatches
+    
     def setUp(self):
         self.v = VerEx()
 
