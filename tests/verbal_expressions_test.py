@@ -12,8 +12,8 @@ class VerExTest(unittest.TestCase):
     def setUp(self):
         self.v = VerEx()
         if sys.version_info[0] < 3:
-    		self.assertRegex = self.assertRegexpMatches
-    		self.assertNotRegex = self.assertNotRegexpMatches
+            self.assertRegex = self.assertRegexpMatches
+            self.assertNotRegex = self.assertNotRegexpMatches
 
     def tearDown(self):
         self.v = None
