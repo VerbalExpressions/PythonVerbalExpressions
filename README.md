@@ -33,22 +33,22 @@ test_url = "https://www.google.com"
 if tester.match(test_url):
     print "Valid URL"
 
-#Print the generated regex
+# Print the generated regex
 print tester.source() # => ^(http)(s)?(\:\/\/)(www\.)?([^\ ]*)$
 ```
 ### Replacing strings
 ```python
-#Create a test string
+# Create a test string
 replace_me = "Replace bird with a duck"
 
-#Create an expression that looks for the word "bird"
+# Create an expression that looks for the word "bird"
 expression = VerEx().find('bird')
 
-#Execute the expression in VerEx
+# Execute the expression in VerEx
 result_VerEx = expression.replace(replace_me, 'duck')
 print result_VerEx
 
-#Or we can compile and use the regular expression using re
+# Or we can compile and use the regular expression using re
 import re
 regexp = expression.compile()
 result_re = regexp.sub('duck', replace_me)
