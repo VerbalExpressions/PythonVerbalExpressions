@@ -13,10 +13,8 @@ class VerEx(object):
     --- VerbalExpressions class ---
     the following methods behave different from the original js lib!
 
-    - end_of_line
-    - start_of_line
     - or
-    when you say you want `$`, `^` and `|`, we just insert it right there.
+    when you say you want `|`, we just insert it right there.
     No other tricks.
 
     And any string you inserted will be automatically grouped
@@ -24,6 +22,8 @@ class VerEx(object):
     '''
     def __init__(self):
         self.s = []
+        self._start_of_line = False
+        self._end_of_line = False
         self.modifiers = {'I': 0, 'M': 0}
 
     def __getattr__(self, attr):
@@ -42,8 +42,16 @@ class VerEx(object):
         return self
 
     def regex(self):
+        regex_string = str(self)
+        
+        if self._start_of_line:
+          regex_string = '^' + regex_string
+
+        if self._end_of_line:
+          regex_string += '$' 
+
         ''' get a regular expression object. '''
-        return re.compile(str(self), self.modifiers['I'] | self.modifiers['M'])
+        return re.compile(regex_string, self.modifiers['I'] | self.modifiers['M'])
     compile = regex
 
     def source(self):
@@ -61,14 +69,16 @@ class VerEx(object):
         return self.add('([^%s]*)' % value)
 
     def end_of_line(self):
-        return self.add('$')
+        self._end_of_line = True
+        return self
 
     @re_escape
     def maybe(self, value):
         return self.add("(%s)?" % value)
 
     def start_of_line(self):
-        return self.add('^')
+        self._start_of_line = True
+        return self
 
     @re_escape
     def find(self, value):
