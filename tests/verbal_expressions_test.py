@@ -3,10 +3,11 @@ import unittest
 from verbalexpressions import VerEx
 import re
 
+
 class VerExTest(unittest.TestCase):
-    '''
+    """
         Tests for verbal_expressions.py
-    '''
+    """
 
     def setUp(self):
         self.v = VerEx()
@@ -136,5 +137,6 @@ class VerExTest(unittest.TestCase):
         self.assertRegexpMatches('mail@mail.com', self.exp, 'Not a valid email')
 
     def test_should_match_url(self):
-        self.exp = self.v.start_of_line().then('http').maybe('s').then('://').maybe('www.').word().then('.').word().maybe('/').end_of_line().regex()
+        self.exp = self.v.start_of_line().then('http').maybe('s').then('://').maybe('www.').word().then('.').word()\
+            .maybe('/').end_of_line().regex()
         self.assertRegexpMatches('https://www.google.com/', self.exp, 'Not a valid email')
