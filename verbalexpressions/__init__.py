@@ -1,1 +1,1 @@
-from verbal_expressions import VerEx, re_escape
+from .verbal_expressions import VerEx, re_escape
