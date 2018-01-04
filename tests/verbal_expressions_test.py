@@ -11,7 +11,10 @@ class VerExTest(unittest.TestCase):
     '''
         Tests for verbal_expressions.py
     '''
-        
+
+    if six.PY3:
+        assertNotRegexpMatches = unittest.TestCase.assertNotRegex
+
     def setUp(self):
         self.v = verbalexpressions.VerEx()
 
