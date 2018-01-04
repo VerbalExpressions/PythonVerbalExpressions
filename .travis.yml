@@ -5,8 +5,7 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
-  - "3.5-dev" # 3.5 development branch
-  - "nightly" # currently points to 3.6-dev
+  - "3.6"
 
 # command to run tests
 script: python setup.py test
