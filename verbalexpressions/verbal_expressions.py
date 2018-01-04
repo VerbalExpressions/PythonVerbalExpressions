@@ -24,7 +24,7 @@ class VerEx(object):
     '''
     def __init__(self):
         self.s = []
-        self.modifiers = {'I': 0, 'M': 0}
+        self.modifiers = {'I': 0, 'M': 0, 'A': 0}
 
     def __getattr__(self, attr):
         ''' any other function will be sent to the regex object '''
@@ -43,7 +43,10 @@ class VerEx(object):
 
     def regex(self):
         ''' get a regular expression object. '''
-        return re.compile(str(self), self.modifiers['I'] | self.modifiers['M'])
+        return re.compile(
+            str(self),
+            self.modifiers['I'] | self.modifiers['M'] | self.modifiers['A']
+        )
     compile = regex
 
     def source(self):
@@ -116,4 +119,8 @@ class VerEx(object):
 
     def search_one_line(self, value=False):
         self.modifiers['M'] = re.M if value else 0
+        return self
+
+    def with_ascii(self, value=False):
+        self.modifiers['A'] = re.A if value else 0
         return self
