@@ -15,6 +15,7 @@ if __name__ == '__main__':
           test_suite='tests',
           scripts = [],
           packages = ['verbalexpressions'],
+          tests_require = ['six'],
           classifiers = [
                           'License :: OSI Approved :: MIT License',
                           'Programming Language :: Python',
