@@ -1,5 +1,8 @@
-PythonVerbalExpressions [![Build Status](https://travis-ci.org/VerbalExpressions/PythonVerbalExpressions.svg?branch=master)](https://travis-ci.org/VerbalExpressions/PythonVerbalExpressions)
+PythonVerbalExpressions
 =======================
+
+[![Build Status](https://travis-ci.org/VerbalExpressions/PythonVerbalExpressions.svg?branch=master)](https://travis-ci.org/VerbalExpressions/PythonVerbalExpressions)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 ## Installation
 ```bash
