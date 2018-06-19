@@ -11,6 +11,7 @@ setup(
     test_suite="tests",
     packages=["verbalexpressions"],
     tests_require=["six"],
+    extras_require={"dev": ["pre-commit", "black"]},
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
