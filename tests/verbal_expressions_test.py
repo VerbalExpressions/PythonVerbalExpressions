@@ -63,7 +63,7 @@ class VerExTest(unittest.TestCase):
         )
 
     def test_should_match_anything_but_specified_element_when_element_is_not_found(
-            self
+        self
     ):
         self.exp = (
             self.v.start_of_line().anything_but("X").end_of_line().regex()
@@ -71,7 +71,7 @@ class VerExTest(unittest.TestCase):
         six.assertRegex(self, "Y Files", self.exp, "Found the X!")
 
     def test_should_not_match_anything_but_specified_element_when_specified_element_is_found(
-            self
+        self
     ):
         self.exp = (
             self.v.start_of_line().anything_but("X").end_of_line().regex()
@@ -89,20 +89,20 @@ class VerExTest(unittest.TestCase):
     def test_should_match_when_maybe_element_is_present(self):
         self.exp = (
             self.v.start_of_line()
-                .find("Python2.")
-                .maybe("7")
-                .end_of_line()
-                .regex()
+            .find("Python2.")
+            .maybe("7")
+            .end_of_line()
+            .regex()
         )
         six.assertRegex(self, "Python2.7", self.exp, "Version doesn't match!")
 
     def test_should_match_when_maybe_element_is_missing(self):
         self.exp = (
             self.v.start_of_line()
-                .find("Python2.")
-                .maybe("7")
-                .end_of_line()
-                .regex()
+            .find("Python2.")
+            .maybe("7")
+            .end_of_line()
+            .regex()
         )
         six.assertRegex(self, "Python2.", self.exp, "Version doesn't match!")
 
@@ -121,33 +121,33 @@ class VerExTest(unittest.TestCase):
     def test_should_match_when_line_break_present(self):
         self.exp = (
             self.v.start_of_line()
-                .anything()
-                .line_break()
-                .anything()
-                .end_of_line()
-                .regex()
+            .anything()
+            .line_break()
+            .anything()
+            .end_of_line()
+            .regex()
         )
         six.assertRegex(self, "Marco \n Polo", self.exp, "Give me a break!!")
 
     def test_should_match_when_line_break_and_carriage_return_present(self):
         self.exp = (
             self.v.start_of_line()
-                .anything()
-                .line_break()
-                .anything()
-                .end_of_line()
-                .regex()
+            .anything()
+            .line_break()
+            .anything()
+            .end_of_line()
+            .regex()
         )
         six.assertRegex(self, "Marco \r\n Polo", self.exp, "Give me a break!!")
 
     def test_should_not_match_when_line_break_is_missing(self):
         self.exp = (
             self.v.start_of_line()
-                .anything()
-                .line_break()
-                .anything()
-                .end_of_line()
-                .regex()
+            .anything()
+            .line_break()
+            .anything()
+            .end_of_line()
+            .regex()
         )
         self.assertNotRegexpMatches(
             "Marco Polo", self.exp, "There's a break here!"
@@ -184,48 +184,48 @@ class VerExTest(unittest.TestCase):
     def test_should_match_when_or_condition_fulfilled(self):
         self.exp = (
             self.v.start_of_line()
-                .anything()
-                .find("G")
-                .OR()
-                .find("h")
-                .end_of_line()
-                .regex()
+            .anything()
+            .find("G")
+            .OR()
+            .find("h")
+            .end_of_line()
+            .regex()
         )
         six.assertRegex(self, "Github", self.exp, "Octocat not found")
 
     def test_should_not_match_when_or_condition_not_fulfilled(self):
         self.exp = (
             self.v.start_of_line()
-                .anything()
-                .find("G")
-                .OR()
-                .find("h")
-                .end_of_line()
-                .regex()
+            .anything()
+            .find("G")
+            .OR()
+            .find("h")
+            .end_of_line()
+            .regex()
         )
         self.assertFalse(re.match(self.exp, "Bitbucket"), "Bucket not found")
 
     def test_should_match_on_upper_case_when_lower_case_is_given_and_any_case_is_true(
-            self
+        self
     ):
         self.exp = (
             self.v.start_of_line()
-                .find("THOR")
-                .end_of_line()
-                .with_any_case(True)
-                .regex()
+            .find("THOR")
+            .end_of_line()
+            .with_any_case(True)
+            .regex()
         )
         six.assertRegex(self, "thor", self.exp, "Upper case Thor, please!")
 
     def test_should_match_multiple_lines(self):
         self.exp = (
             self.v.start_of_line()
-                .anything()
-                .find("Pong")
-                .anything()
-                .end_of_line()
-                .search_one_line(True)
-                .regex()
+            .anything()
+            .find("Pong")
+            .anything()
+            .end_of_line()
+            .search_one_line(True)
+            .regex()
         )
         six.assertRegex(
             self, "Ping \n Pong \n Ping", self.exp, "Pong didn't answer"
@@ -234,29 +234,29 @@ class VerExTest(unittest.TestCase):
     def test_should_match_email_address(self):
         self.exp = (
             self.v.start_of_line()
-                .word()
-                .then("@")
-                .word()
-                .then(".")
-                .word()
-                .end_of_line()
-                .regex()
+            .word()
+            .then("@")
+            .word()
+            .then(".")
+            .word()
+            .end_of_line()
+            .regex()
         )
         six.assertRegex(self, "mail@mail.com", self.exp, "Not a valid email")
 
     def test_should_match_url(self):
         self.exp = (
             self.v.start_of_line()
-                .then("http")
-                .maybe("s")
-                .then("://")
-                .maybe("www.")
-                .word()
-                .then(".")
-                .word()
-                .maybe("/")
-                .end_of_line()
-                .regex()
+            .then("http")
+            .maybe("s")
+            .then("://")
+            .maybe("www.")
+            .word()
+            .then(".")
+            .word()
+            .maybe("/")
+            .end_of_line()
+            .regex()
         )
         six.assertRegex(
             self, "https://www.google.com/", self.exp, "Not a valid email"
