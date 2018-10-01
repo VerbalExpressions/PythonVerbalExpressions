@@ -1,14 +1,15 @@
 language: python
-python:
-  - "2.7"
-  - "3.2"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "3.7"
-    dist: xenial
-    sudo: true
+matrix:
+  include:
+    - python: 2.7
+    - python: 3.2
+    - python: 3.3
+    - python: 3.4
+    - python: 3.5
+    - python: 3.6
+    - python: 3.7
+      dist: xenial
+      sudo: true
 
 # command to run tests
 script: python setup.py test
