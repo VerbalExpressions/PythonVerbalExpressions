@@ -1,5 +1,1 @@
-venv
-dist
-build
-*.py[co]
-*.egg-info
+__pycache__/
