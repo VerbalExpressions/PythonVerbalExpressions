@@ -10,15 +10,15 @@ pip install VerbalExpressions
 ```
 ## Usage
 ```python
-from verbalexpressions import VerEx
-verbal_expression = VerEx()
+from verbalexpressions import Verbex
+verbal_expression = Verbex()
 ```
 ## Examples
 
 ### Testing if we have a valid URL
 ```python
 # Create an example of how to test for correctly formed URLs
-verbal_expression = VerEx()
+verbal_expression = Verbex()
 tester = (verbal_expression.
             start_of_line().
             find('http').
@@ -45,11 +45,11 @@ print tester.source() # => ^(http)(s)?(\:\/\/)(www\.)?([^\ ]*)$
 replace_me = "Replace bird with a duck"
 
 # Create an expression that looks for the word "bird"
-expression = VerEx().find('bird')
+expression = Verbex().find('bird')
 
-# Execute the expression in VerEx
-result_VerEx = expression.replace(replace_me, 'duck')
-print result_VerEx
+# Execute the expression in Verbex
+result_Verbex = expression.replace(replace_me, 'duck')
+print result_Verbex
 
 # Or we can compile and use the regular expression using re
 import re
@@ -59,7 +59,7 @@ print result_re
 ```
 ### Shorthand for string replace
 ```python
-result = VerEx().find('red').replace('We have a red house', 'blue')
+result = Verbex().find('red').replace('We have a red house', 'blue')
 print result
 ```
 
