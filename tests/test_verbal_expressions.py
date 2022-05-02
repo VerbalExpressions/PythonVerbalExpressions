@@ -280,6 +280,26 @@ class verbexTest(unittest.TestCase):
         self.assertRegex("https://www.google.com/", regex)
         self.assertNotRegex("htps://www.google.com/", regex)
 
+    def test_followed_by(self):
+        regex = Verbex().find("!").followed_by(":").regex()
+        self.assertRegex("!:", regex)
+        self.assertNotRegex("! :", regex)
+
+    def test_not_followed_by(self):
+        regex = Verbex().find("!").not_followed_by(":").regex()
+        self.assertNotRegex("!:", regex)
+        self.assertRegex("! :", regex)
+
+    def test_preceded_by(self):
+        regex = Verbex().preceded_by("!").find(":").regex()
+        self.assertRegex("!:", regex)
+        self.assertNotRegex("! :", regex)
+
+    def test_not_preceded_by(self):
+        regex = Verbex().not_preceded_by("!").find(":").regex()
+        self.assertNotRegex("!:", regex)
+        self.assertRegex("! :", regex)
+
 
 if __name__ == "__main__":
     unittest.main()

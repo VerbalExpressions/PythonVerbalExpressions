@@ -402,6 +402,54 @@ class Verbex:
         """
         return self.find(text)
 
+    @re_escape
+    @beartype
+    def followed_by(self, text: VerbexEscapedCharClassOrSpecial) -> Verbex:
+        """Match if string is followed by text.
+
+        Positive lookahead
+
+        Returns:
+            Modified Verbex object.
+        """
+        return self._add(f"(?={text})")
+
+    @re_escape
+    @beartype
+    def not_followed_by(self, text: VerbexEscapedCharClassOrSpecial) -> Verbex:
+        """Match if string is not followed by text.
+
+        Negative lookahead
+
+        Returns:
+            Modified Verbex object.
+        """
+        return self._add(f"(?!{text})")
+
+    @re_escape
+    @beartype
+    def preceded_by(self, text: VerbexEscapedCharClassOrSpecial) -> Verbex:
+        """Match if string is not preceded by text.
+
+        Positive lookbehind
+
+        Returns:
+            Modified Verbex object.
+        """
+        return self._add(f"(?<={text})")
+
+    @re_escape
+    @beartype
+    def not_preceded_by(self, text: VerbexEscapedCharClassOrSpecial) -> Verbex:
+        """Match if string is not preceded by text.
+
+        Negative Lookbehind
+
+        Returns:
+            Modified Verbex object.
+        """
+        return self._add(f"(?<!{text})")
+
     # only allow CharclassOrChars
 
     @re_escape
