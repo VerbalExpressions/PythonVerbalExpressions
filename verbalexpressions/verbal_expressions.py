@@ -6,9 +6,13 @@ from enum import Enum
 from functools import wraps
 
 try:
-    from typing import Annotated, TypeAlias  # <--------------- if Python ≥ 3.9.0
+    from typing import (  # <--------------- if Python ≥ 3.9.0
+        Annotated,
+        ParamSpec,
+        TypeAlias,
+    )
 except (ModuleNotFoundError, ImportError):
-    from typing_extensions import TypeAlias, Annotated  # type: ignore # <--- if Python < 3.9.0
+    from typing_extensions import TypeAlias, Annotated, ParamSpec  # type: ignore # <--- if Python < 3.9.0
 
 from typing import Pattern, Protocol, TypeVar
 
@@ -20,7 +24,6 @@ from beartype.typing import (  # type: ignore
     Iterator,
     List,
     Optional,
-    ParamSpec,
     Tuple,
     Union,
     cast,
