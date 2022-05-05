@@ -7,7 +7,7 @@ from functools import wraps
 
 try:
     from typing import Annotated, TypeAlias  # <--------------- if Python ≥ 3.9.0
-except ModuleNotFoundError:
+except (ModuleNotFoundError, ImportError):
     from typing_extensions import TypeAlias, Annotated  # type: ignore # <--- if Python < 3.9.0
 
 from typing import Pattern, Protocol, TypeVar
