@@ -6,9 +6,9 @@ from enum import Enum
 from functools import wraps
 
 try:
-    from typing import TypeAlias
+    from typing import Annotated, TypeAlias  # <--------------- if Python ≥ 3.9.0
 except ModuleNotFoundError:
-    from typing_extensions import TypeAlias
+    from typing_extensions import TypeAlias, Annotated  # type: ignore # <--- if Python < 3.9.0
 
 from typing import Pattern, Protocol, TypeVar
 
@@ -27,11 +27,6 @@ from beartype.typing import (  # type: ignore
     runtime_checkable,
 )
 from beartype.vale import Is  # type: ignore
-
-try:
-    from typing import Annotated  # <--------------- if Python ≥ 3.9.0
-except ModuleNotFoundError:
-    from typing_extensions import Annotated  # type: ignore # <--- if Python < 3.9.0
 
 
 def _string_len_is_1(text: object) -> bool:
