@@ -1,7 +1,7 @@
 PythonVerbalExpressions
 =======================
 
-[![Build Status](https://travis-ci.org/VerbalExpressions/PythonVerbalExpressions.svg?branch=master)](https://travis-ci.org/VerbalExpressions/PythonVerbalExpressions)
+![Build Status](https://github.com/rbroderi/PythonVerbalExpressions/actions/workflows/main.yml/badge.svg?event=push)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 ## Installation
@@ -56,11 +56,6 @@ import re
 regexp = expression.compile()
 result_re = regexp.sub('duck', replace_me)
 print result_re
-```
-### Shorthand for string replace
-```python
-result = Verbex().find('red').replace('We have a red house', 'blue')
-print result
 ```
 
 ## Developer setup : running the tests
