@@ -4,7 +4,13 @@ from __future__ import annotations
 import re
 from enum import Enum
 from functools import wraps
-from typing import Pattern, Protocol, TypeAlias, TypeVar
+
+try:
+    from typing import TypeAlias
+except ModuleNotFoundError:
+    from typing_extensions import TypeAlias
+
+from typing import Pattern, Protocol, TypeVar
 
 from beartype import beartype  # type: ignore
 from beartype.typing import (  # type: ignore
