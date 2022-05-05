@@ -47,11 +47,7 @@ replace_me = "Replace bird with a duck"
 # Create an expression that looks for the word "bird"
 expression = Verbex().find('bird')
 
-# Execute the expression in Verbex
-result_Verbex = expression.replace(replace_me, 'duck')
-print result_Verbex
-
-# Or we can compile and use the regular expression using re
+# Compile and use the regular expression using re
 import re
 regexp = expression.compile()
 result_re = regexp.sub('duck', replace_me)
