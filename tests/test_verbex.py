@@ -4,7 +4,7 @@
 import re
 import unittest
 
-from verbalexpressions import CharClass, SpecialChar, Verbex
+from verbex import CharClass, SpecialChar, Verbex
 
 
 class verbexTest(unittest.TestCase):
