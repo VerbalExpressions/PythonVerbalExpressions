@@ -1,0 +1,213 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+minimum_pre_commit_version: 1.21.0
+repos:
+  - repo: meta
+    hooks:
+      - id: check-hooks-apply
+      - id: check-useless-excludes
+  # - repo: local
+    # hooks:
+      # - id: verify_ascii
+        # name: "Check for non ascii chars in file names"
+        # entry: "./Src/Bash/verifyAscii.sh"
+        # language: script
+        # pass_filenames: false
+        # require_serial: true
+        # always_run: true
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: trailing-whitespace
+        types: [file, text]
+      - id: end-of-file-fixer
+        types: [file, text]
+      - id: check-case-conflict
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: check-merge-conflict
+        name: "Check for merge conflicts"
+      - id: check-yaml
+        name: "Yaml: Check files"
+        types: [file, yaml]
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.26.3  # or higher tag
+    hooks:
+      - id: yamllint
+        name: "Yaml: Linting files"
+        args: [--format, parsable, --strict]
+        types: [file, yaml]
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.1.13
+    hooks:
+      - id: remove-tabs
+        name: "Python: Convert Tabs to 4 spaces"
+        args: ['--whitespaces-count', '4']  # defaults to: 4
+        types: [file, python]
+# seems to freeze with more than one file ?!
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        name: "Python: Formating files"
+        args: [--line-length=88, --preview, --safe]
+        types: [file, python]
+  - repo: https://github.com/asottile/blacken-docs
+    rev: v1.12.1
+    hooks:
+      - id: blacken-docs
+        name: "Python: Formating code in docstrings"
+        additional_dependencies: [black==20.8b1]
+        types: [file, python]
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        name: "Python: Sorting imports"
+        types: [file, python]
+        args:
+          - "--multi-line=3"   # makes this compatible with add-trailing-comma
+          - "--trailing-comma"  # makes this compatible with add-trailing-comma
+          - "--profile"
+          - "black"
+  # - repo: local
+    # hooks:
+      # - id: python_file_name_check
+        # name: "Python: File name check"
+        # entry: "./Src/Bash/pythonCheckFilenames.sh"
+        # language: script
+        # pass_filenames: true
+        # types: [file, python]
+        # verbose: false
+  - repo: https://github.com/pycqa/flake8
+    rev: '4.0.1'  # old 4.0.1 seem to freeze?
+    hooks:
+      - id: flake8
+        name: "Python: Linting files (flake8)"
+        args:  # arguments to configure flake8
+        # making isort line length compatible with black
+          - "--max-line-length=88"
+          - "--max-complexity=18"
+        # allowing these errors now that in the past we ignored.
+        # D100 Missing docstring in public module
+        # D103 Missing docstring in public function
+        # D104 Missing docstring in public package
+        # D105 Missing docstring in magic method
+        # D107 Missing docstring in __init__
+        # D200 One-line docstring should fit on one line with quotes
+        # D205 1 blank line required between summary line and description
+        # D400 First line should end with a period
+        # D401 First line should be in imperative mood
+        # D403 First word of the first line should be properly capitalized
+        # these are errors that will be ignored by flake8
+        # VNE002 variable name 'XXX' should be clarified
+        # W503 see https://www.flake8rules.com/rules/W503.html no longer best practice
+        #  - "--ignore=VNE002,W503"
+        # removed cohesion as it was causing issues with enum type classes
+        # E203 spaces around ':' ignoring per https://github.com/psf/black/issues/315
+        # PD005 and PD011 falsely flag on other add or values methods
+          - "--ignore=W503,E203, PD005, PD011"
+        # when checking with wemake  - "--ignore=W503,E203, PD005, PD011, WPS226, WPS112, WPS204, Q000, WPS421, WPS305, WPS237, WPS529, E800, C812, WPS110, WPS360, WPS323"
+        additional_dependencies:
+          - flake8-blind-except
+          - flake8-assert-msg
+          - flake8-builtins
+          - flake8-docstrings
+#          - flake8-requirements  # removed as there was issues with requirements creation tool
+          - flake8-implicit-str-concat
+          - flake8-mock
+          - flake8-variables-names
+          - pep8-naming
+          - flake8-bugbear
+          - flake8-executable
+          - flake8-raise
+          - flake8-pytest
+          - flake8-use-pathlib
+          - flake8-string-format
+          - flake8-colors
+          - flake8-tuple
+          - pandas-vet
+         # - wemake-python-styleguide
+        exclude: "setup[.]py|conf[.]py|__init__[.]py"
+        types: [file, python]
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v2.2.3
+    hooks:
+      - id: add-trailing-comma
+        name: "Python: Add trailing comma"
+        args: [--py36-plus]
+        types: [file, python]
+  # - repo: local
+    # hooks:
+      # - id: python_package_check
+        # name: "Python: Checking Package Structure"
+        # entry: "./Src/Bash/pythonCheckPackage.sh"
+        # language: script
+        # pass_filenames: false
+        # verbose: false
+        # require_serial: true
+        # types: [file, python]
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v0.950'
+    hooks:
+      - id: mypy
+        name: "Python: Checking variable types"
+        args: [--ignore-missing-imports, --allow-redefinition]
+        exclude: "setup[.]py|conf[.]py"
+        additional_dependencies:
+          - pydantic
+          - types-all
+          - pandas-stubs
+        types: [file, python]
+  - repo: https://github.com/PyCQA/bandit
+    rev: '1.7.4'
+    hooks:
+      - id: bandit
+        name: "Python: Checking for potential security issues (bandit)"
+        args:
+          - "--skip=B404,B506,B607,B603,B701,B101,B602"
+  - repo: https://github.com/jazzband/pip-tools
+    rev: 6.6.0
+    hooks:
+      - id: pip-compile
+        name: "Python: Compile any requirements.in to requirements.txt"
+        args: [--quiet, --no-allow-unsafe, requirements.in]
+        files: requirements[.]in
+      - id: pip-compile
+        name: "Python: Compile any requirements_dev.in to requirements_dev.txt"
+        args: [--quiet, --no-allow-unsafe, requirements_dev.in]
+        files: requirements_dev[.]in
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: v1.2.4
+    hooks:
+      - id: python-safety-dependencies-check
+        name: "Python: Checking requirements.txt files for vulnerablitites"
+        always_run: true
+        files: requirements.txt
+        args: [requirements.txt]
+      - id: python-safety-dependencies-check
+        name: "Python: Checking requirements_dev.txt files for vulnerablitites"
+        always_run: true
+        files: requirements_dev.txt
+        args: [requirements_dev.txt]
+  - repo: local
+    hooks:
+      - id: remove-en-dashes
+        name: Remove the EXTREMELY confusing unicode character U+2013
+        language: system
+        entry: perl -pi* -e 's/\xe2\x80\x93/-/g && ($t = 1) && print STDERR $_; END{{exit $t}}'
+        types: [file]
+        types_or: [python, powershell, lua, jinja]
+  - repo: https://github.com/sirosen/texthooks
+    rev: 0.3.1
+    hooks:
+      - id: fix-smartquotes
+        types: [file]
+        types_or: [python, powershell, lua, jinja]
+      - id: fix-ligatures
+        types: [file]
+        types_or: [python, powershell, lua, jinja]
+      - id: forbid-bidi-controls
+        types: [file]
+        types_or: [python, powershell, lua, jinja]

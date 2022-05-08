@@ -11,8 +11,8 @@ try:
         ParamSpec,
         TypeAlias,
     )
-except (ModuleNotFoundError, ImportError):
-    from typing_extensions import TypeAlias, Annotated, ParamSpec  # type: ignore # <--- if Python < 3.9.0
+except ImportError:
+    from typing_extensions import TypeAlias, Annotated, ParamSpec  # type: ignore # <--- if Python < 3.9.0 # noqa E501
 
 from typing import Pattern, Protocol, TypeVar
 
