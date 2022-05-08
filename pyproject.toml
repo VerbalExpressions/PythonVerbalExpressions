@@ -14,8 +14,6 @@ python =
     3.8: py38
     3.9: py39
     3.10: py310
-    3.11: py311
-
 [testenv]
 setenv =
    PYTHONPATH = {toxinidir}
