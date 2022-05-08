@@ -1,3 +1,3 @@
 pushd "%~dp0"
-pdoc verbex/verbex -o html
+pdoc verbex/verbex -o docs
 pause
