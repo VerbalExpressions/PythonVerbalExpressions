@@ -45,7 +45,7 @@ R = TypeVar("R")  # noqa VNE001
 
 
 # work around for bug https://github.com/python/mypy/issues/12660
-# fixed in next version of mypy
+# fixed in next version of mypy.
 @runtime_checkable
 class HasIter(Protocol):
     """Workaround for mypy P.args."""
