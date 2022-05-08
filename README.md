@@ -15,7 +15,7 @@ verbex = Verbex()
 ```
 
 ## Documentation
-[API]https://rbroderi.github.io/Verbex/verbex/verbex.html
+[API](https://rbroderi.github.io/Verbex/verbex/verbex.html)
 ## Examples
 
 ### Testing if we have a valid URL
