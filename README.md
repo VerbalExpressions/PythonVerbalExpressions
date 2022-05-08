@@ -1,25 +1,25 @@
-PythonVerbalExpressions
-=======================
+Verbex: Python verbal based regular expressions
+================================================
 
-![Build Status](https://github.com/rbroderi/PythonVerbalExpressions/actions/workflows/main.yml/badge.svg?event=push)
+![Build Status](https://github.com/rbroderi/Verbex/actions/workflows/main.yml/badge.svg?event=push)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 ## Installation
 ```bash
-pip install VerbalExpressions
+pip install Verbex
 ```
 ## Usage
 ```python
-from verbalexpressions import Verbex
-verbal_expression = Verbex()
+from verbex import Verbex
+verbex = Verbex()
 ```
 ## Examples
 
 ### Testing if we have a valid URL
 ```python
 # Create an example of how to test for correctly formed URLs
-verbal_expression = Verbex()
-tester = (verbal_expression.
+verbex = Verbex()
+tester = (verbex.
             start_of_line().
             find('http').
             maybe('s').
@@ -33,11 +33,11 @@ tester = (verbal_expression.
 test_url = "https://www.google.com"
 
 # Test if the URL is valid
-if tester.match(test_url):
-    print "Valid URL"
+if re.match(test_url.regex,test_url):
+    print("Valid URL")
 
 # Print the generated regex
-print tester.source() # => ^(http)(s)?(\:\/\/)(www\.)?([^\ ]*)$
+print(tester) # => ^(http)(s)?(\:\/\/)(www\.)?([^\ ]*)$
 ```
 ### Replacing strings
 ```python
@@ -51,7 +51,7 @@ expression = Verbex().find('bird')
 import re
 regexp = expression.compile()
 result_re = regexp.sub('duck', replace_me)
-print result_re
+print(result_re)
 ```
 
 ## Developer setup : running the tests
