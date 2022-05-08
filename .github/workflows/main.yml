@@ -34,6 +34,6 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install typing-extensions beartype
+          pip install typing-extensions beartype tox
       - name: Run tests
         run: tox
