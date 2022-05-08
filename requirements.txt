@@ -6,3 +6,5 @@
 #
 beartype==0.10.4
     # via -r requirements.in
+typing-extensions==4.2.0
+    # via -r requirements.in
