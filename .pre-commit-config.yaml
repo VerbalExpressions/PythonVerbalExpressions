@@ -11,8 +11,10 @@ repos:
     hooks:
       - id: trailing-whitespace
         types: [file, text]
+        exclude_types: [html, javascript]
       - id: end-of-file-fixer
         types: [file, text]
+        exclude_types: [html, javascript]
       - id: check-case-conflict
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.2.0
@@ -197,3 +199,17 @@ repos:
       - id: forbid-bidi-controls
         types: [file]
         types_or: [python, powershell, lua, jinja]
+  - repo: local
+    hooks:
+      - id: pdoc
+        name: "Generate Documentation"
+        description: 'Auto generating documentation with pdoc'
+        entry: pdoc
+        args: [verbex, -o, docs]
+        language: python
+        language_version: python3
+        require_serial: true
+        types: [python]
+        pass_filenames: false
+        additional_dependencies:
+          - beartype

@@ -2,3 +2,4 @@ tox
 mypy>=0.950
 black
 pre-commit
+pdoc
