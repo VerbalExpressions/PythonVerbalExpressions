@@ -7,6 +7,7 @@ legacy_tox_ini = """
 [tox]
 envlist = py36, py37, py38, py39, py310, py311
 isolated_build = true
+skip_missing_interpreters = true
 
 [testenv]
 setenv =

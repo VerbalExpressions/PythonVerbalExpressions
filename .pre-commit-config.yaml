@@ -6,15 +6,6 @@ repos:
     hooks:
       - id: check-hooks-apply
       - id: check-useless-excludes
-  # - repo: local
-    # hooks:
-      # - id: verify_ascii
-        # name: "Check for non ascii chars in file names"
-        # entry: "./Src/Bash/verifyAscii.sh"
-        # language: script
-        # pass_filenames: false
-        # require_serial: true
-        # always_run: true
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.2.0
     hooks:
@@ -31,6 +22,13 @@ repos:
       - id: check-yaml
         name: "Yaml: Check files"
         types: [file, yaml]
+      - id: check-toml
+        name: "TOML: check toml syntax"
+        types: [file, toml]
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.14.3
+    hooks:
+      - id: check-github-workflows
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.26.3  # or higher tag
     hooks:
@@ -45,7 +43,6 @@ repos:
         name: "Python: Convert Tabs to 4 spaces"
         args: ['--whitespaces-count', '4']  # defaults to: 4
         types: [file, python]
-# seems to freeze with more than one file ?!
   - repo: https://github.com/psf/black
     rev: 22.3.0
     hooks:
@@ -71,15 +68,15 @@ repos:
           - "--trailing-comma"  # makes this compatible with add-trailing-comma
           - "--profile"
           - "black"
-  # - repo: local
-    # hooks:
-      # - id: python_file_name_check
-        # name: "Python: File name check"
-        # entry: "./Src/Bash/pythonCheckFilenames.sh"
-        # language: script
-        # pass_filenames: true
-        # types: [file, python]
-        # verbose: false
+  - repo: local
+    hooks:
+      - id: python_file_name_check
+        name: "Python: File name check"
+        entry: "python ./check_names.py"
+        language: python
+        pass_filenames: true
+        types: [file, python]
+        verbose: false
   - repo: https://github.com/pycqa/flake8
     rev: '4.0.1'  # old 4.0.1 seem to freeze?
     hooks:
@@ -114,7 +111,6 @@ repos:
           - flake8-assert-msg
           - flake8-builtins
           - flake8-docstrings
-#          - flake8-requirements  # removed as there was issues with requirements creation tool
           - flake8-implicit-str-concat
           - flake8-mock
           - flake8-variables-names
@@ -138,16 +134,6 @@ repos:
         name: "Python: Add trailing comma"
         args: [--py36-plus]
         types: [file, python]
-  # - repo: local
-    # hooks:
-      # - id: python_package_check
-        # name: "Python: Checking Package Structure"
-        # entry: "./Src/Bash/pythonCheckPackage.sh"
-        # language: script
-        # pass_filenames: false
-        # verbose: false
-        # require_serial: true
-        # types: [file, python]
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: 'v0.950'
     hooks:
