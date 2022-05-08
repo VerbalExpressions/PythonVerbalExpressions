@@ -9,10 +9,11 @@ try:
     from typing import (  # <--------------- if Python ≥ 3.9.0
         Annotated,
         ParamSpec,
+        Protocol,
         TypeAlias,
     )
 except ImportError:
-    from typing_extensions import TypeAlias, Annotated, ParamSpec  # type: ignore # <--- if Python < 3.9.0 # noqa E501
+    from typing_extensions import TypeAlias, Protocol, Annotated, ParamSpec  # type: ignore # <--- if Python < 3.9.0 # noqa E501
 
 from typing import Pattern, TypeVar
 
@@ -24,7 +25,6 @@ from beartype.typing import (  # type: ignore
     Iterator,
     List,
     Optional,
-    Protocol,
     Tuple,
     Union,
     cast,
