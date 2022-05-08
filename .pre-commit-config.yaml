@@ -203,7 +203,7 @@ repos:
     hooks:
       - id: pdoc
         name: "Generate Documentation"
-        description: 'Auto generating documentation with pdoc'
+        description: 'Auto generating documentation with PDOC'
         entry: pdoc
         args: [verbex, -o, docs]
         language: python
