@@ -11,9 +11,10 @@ try:
         ParamSpec,
         Protocol,
         TypeAlias,
+        runtime_checkable,
     )
 except ImportError:
-    from typing_extensions import TypeAlias, Protocol, Annotated, ParamSpec  # type: ignore # <--- if Python < 3.9.0 # noqa E501
+    from typing_extensions import TypeAlias, Protocol, Annotated, ParamSpec, runtime_checkable  # type: ignore # <--- if Python < 3.9.0 # noqa E501
 
 from typing import Pattern, TypeVar
 
@@ -28,7 +29,6 @@ from beartype.typing import (  # type: ignore
     Tuple,
     Union,
     cast,
-    runtime_checkable,
 )
 from beartype.vale import Is  # type: ignore
 
