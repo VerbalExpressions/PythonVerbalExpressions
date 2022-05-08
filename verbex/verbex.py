@@ -173,6 +173,26 @@ EscapedCharClassOrSpecial: TypeAlias = Union[str, CharClass, SpecialChar]
 VerbexEscapedCharClassOrSpecial: TypeAlias = Union["Verbex", EscapedCharClassOrSpecial]
 
 
+def _poseur_decorator(*poseur: Any) -> Any:
+    """Positional-only arguments runtime checker."""
+    import functools
+
+    def caller(func: Callable[P, R]) -> Callable[P, R]:  # type: ignore
+        @functools.wraps(func)
+        def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
+            poseur_args = set(poseur).intersection(kwargs)  # type: ignore
+            if poseur_args:
+                raise TypeError(
+                    "%s() got some positional-only arguments passed as keyword"
+                    " arguments: %r" % (func.__name__, ", ".join(poseur_args)),
+                )
+            return func(*args, **kwargs)  # type: ignore
+
+        return wrapper
+
+    return caller
+
+
 class Verbex:
     """
     VerbalExpressions class.
@@ -248,9 +268,9 @@ class Verbex:
 
     @re_escape
     @beartype
+    @_poseur_decorator("self")
     def capture_group(
         self,
-        /,
         name_or_text: Union[Optional[str], VerbexEscapedCharClassOrSpecial] = None,
         text: Optional[VerbexEscapedCharClassOrSpecial] = None,
     ) -> Verbex:
