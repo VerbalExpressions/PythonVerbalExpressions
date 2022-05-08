@@ -3,7 +3,9 @@ Verbex: Python verbal based regular expressions
 
 ![Build Status](https://github.com/rbroderi/Verbex/actions/workflows/main.yml/badge.svg?event=push)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
-[![PyPI license](https://pypi.org/project/Verbex/)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![PyPI license](https://img.shields.io/pypi/l/verbex)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/verbex)](https://pypi.python.org/pypi/ansicolortags/)
+[![Generic badge](https://img.shields.io/badge/mypy-passed-green.svg)](https://shields.io/)
 
 ## Installation
 ```bash
