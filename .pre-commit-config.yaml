@@ -55,7 +55,7 @@ repos:
     hooks:
       - id: blacken-docs
         name: "Python: Formating code in docstrings"
-        additional_dependencies: [black==20.8b1]
+        additional_dependencies: [black==22.3]
         types: [file, python]
   - repo: https://github.com/pycqa/isort
     rev: 5.10.1
