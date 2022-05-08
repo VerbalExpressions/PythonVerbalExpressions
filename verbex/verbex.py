@@ -14,7 +14,7 @@ try:
 except ImportError:
     from typing_extensions import TypeAlias, Annotated, ParamSpec  # type: ignore # <--- if Python < 3.9.0 # noqa E501
 
-from typing import Pattern, Protocol, TypeVar
+from typing import Pattern, TypeVar
 
 from beartype import beartype  # type: ignore
 from beartype.typing import (  # type: ignore
@@ -24,6 +24,7 @@ from beartype.typing import (  # type: ignore
     Iterator,
     List,
     Optional,
+    Protocol,
     Tuple,
     Union,
     cast,
