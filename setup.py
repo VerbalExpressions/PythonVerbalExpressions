@@ -13,7 +13,7 @@ setup(
         " VerbalExpressions repo - https://github.com/jehna/VerbalExpressions"
     ),
     long_description=long_description,
-    long_description_content_type='text/markdown'
+    long_description_content_type="text/markdown",
     author=(
         "Victor Titor, Yan Wenjun, diogobeda, Mihai Ionut Vilcu, Peder Soholt, Sameer"
         " Raghuram, Kharms, Richard Broderick"
