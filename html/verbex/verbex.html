@@ -1,0 +1,2290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>verbex.verbex API documentation</title>
+<meta name="description" content="Generate regular expressions from an easier fluent verbal form." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>verbex.verbex</code></h1>
+</header>
+<section id="section-intro">
+<p>Generate regular expressions from an easier fluent verbal form.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Generate regular expressions from an easier fluent verbal form.&#34;&#34;&#34;
+from __future__ import annotations
+
+import re
+from enum import Enum
+from functools import wraps
+
+try:
+    from typing import (  # &lt;--------------- if Python ≥ 3.9.0
+        Annotated,
+        ParamSpec,
+        TypeAlias,
+    )
+except (ModuleNotFoundError, ImportError):
+    from typing_extensions import TypeAlias, Annotated, ParamSpec  # type: ignore # &lt;--- if Python &lt; 3.9.0
+
+from typing import Pattern, Protocol, TypeVar
+
+from beartype import beartype  # type: ignore
+from beartype.typing import (  # type: ignore
+    Any,
+    Callable,
+    Dict,
+    Iterator,
+    List,
+    Optional,
+    Tuple,
+    Union,
+    cast,
+    runtime_checkable,
+)
+from beartype.vale import Is  # type: ignore
+
+
+def _string_len_is_1(text: object) -&gt; bool:
+    return isinstance(text, str) and len(text) == 1
+
+
+Char = Annotated[str, Is[_string_len_is_1]]
+
+
+P = ParamSpec(&#34;P&#34;)  # noqa VNE001
+R = TypeVar(&#34;R&#34;)  # noqa VNE001
+
+
+# work around for bug https://github.com/python/mypy/issues/12660
+# fixed in next version of mypy
+@runtime_checkable
+class HasIter(Protocol):
+    &#34;&#34;&#34;Workaround for mypy P.args.&#34;&#34;&#34;
+
+    def __iter__(self) -&gt; Iterator[Any]:
+        &#34;&#34;&#34;Object can be iterated.
+
+        Yields:
+            Next object.
+        &#34;&#34;&#34;
+        ...
+
+
+# work around for bug https://github.com/python/mypy/issues/12660
+# fixed in next version of mypy
+@runtime_checkable
+class HasItems(Protocol):
+    &#34;&#34;&#34;Workaround for mypy P.kwargs.&#34;&#34;&#34;
+
+    def items(self) -&gt; Tuple[str, Any]:
+        &#34;&#34;&#34;Object has items method.
+
+        Returns:
+            The dict of items.
+        &#34;&#34;&#34;
+        ...
+
+
+class EscapedText(str):
+    &#34;&#34;&#34;Text that has been escaped for regex.
+
+    Arguments:
+        str -- Extend the string class.
+    &#34;&#34;&#34;
+
+    def __new__(cls, value: str) -&gt; EscapedText:
+        &#34;&#34;&#34;Return a escaped regex string.
+
+        Arguments:
+            value -- the string to escape
+
+        Returns:
+            _description_
+        &#34;&#34;&#34;
+        return str.__new__(cls, re.escape(value))
+
+
+def re_escape(func: Callable[P, R]) -&gt; Callable[P, R]:
+    &#34;&#34;&#34;Automatically escape any string parameters as EscapedText.
+
+    Arguments:
+        func -- The function to decorate.
+
+    Returns:
+        The decorated function.
+    &#34;&#34;&#34;
+
+    @wraps(func)
+    def inner(*args: P.args, **kwargs: P.kwargs) -&gt; R:  # type: ignore
+        escaped_args: List[Any] = []
+        escaped_kwargs: Dict[str, Any] = {}
+        for arg in cast(HasIter, args):
+            if not isinstance(arg, EscapedText) and isinstance(arg, str):
+                escaped_args.append(EscapedText(arg))
+            else:
+                escaped_args.append(arg)
+        arg_k: str
+        arg_v: Any
+        for arg_k, arg_v in cast(HasItems, kwargs).items():
+            if not isinstance(arg_v, EscapedText) and isinstance(arg_v, str):
+                escaped_kwargs[arg_k] = EscapedText(str(arg_v))
+            else:
+                escaped_kwargs[arg_k] = arg_v
+        return func(*escaped_args, **escaped_kwargs)  # type: ignore
+
+    return inner
+
+
+class CharClass(Enum):
+    &#34;&#34;&#34;Enum of character classes in regex.
+
+    Arguments:
+        Enum -- Extends the Enum class.
+    &#34;&#34;&#34;
+
+    DIGIT = &#34;\\d&#34;
+    LETTER = &#34;\\w&#34;
+    UPPERCASE_LETTER = &#34;\\u&#34;
+    LOWERCASE_LETTER = &#34;\\l&#34;
+    WHITESPACE = &#34;\\s&#34;
+    TAB = &#34;\\t&#34;
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;To string method based on Enum value.
+
+        Returns:
+            value of Enum
+        &#34;&#34;&#34;
+        return self.value
+
+
+class SpecialChar(Enum):
+    &#34;&#34;&#34;Enum of special charaters, shorthand.
+
+    Arguments:
+        Enum -- Extends the Enum class.
+    &#34;&#34;&#34;
+
+    # does not work  / should not be used in [ ]
+    LINEBREAK = &#34;(\\n|(\\r\\n))&#34;
+    START_OF_LINE = &#34;^&#34;
+    END_OF_LINE = &#34;$&#34;
+    TAB = &#34;\t&#34;
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;To string for special chars enum.
+
+        Returns:
+            Return value of enum as string.
+        &#34;&#34;&#34;
+        return self.value
+
+
+CharClassOrChars: TypeAlias = Union[str, CharClass]
+EscapedCharClassOrSpecial: TypeAlias = Union[str, CharClass, SpecialChar]
+VerbexEscapedCharClassOrSpecial: TypeAlias = Union[&#34;Verbex&#34;, EscapedCharClassOrSpecial]
+
+
+class Verbex:
+    &#34;&#34;&#34;
+    VerbalExpressions class.
+
+    the following methods do not try to match the original js lib!
+    &#34;&#34;&#34;
+
+    EMPTY_REGEX_FLAG = re.RegexFlag(0)
+
+    @re_escape
+    @beartype
+    def __init__(self, modifiers: re.RegexFlag = EMPTY_REGEX_FLAG):
+        &#34;&#34;&#34;Create a Verbex object; setting any needed flags.
+
+        Keyword Arguments:
+            modifiers -- Regex modifying flags (default: {re.RegexFlag(0)})
+        &#34;&#34;&#34;
+        # self._parts: List[str] = [text]
+        self._parts: List[str] = []
+        self._modifiers = modifiers
+
+    @property
+    def modifiers(self) -&gt; re.RegexFlag:
+        &#34;&#34;&#34;Return the modifiers for this Verbex object.
+
+        Returns:
+            The modifiers applied to this object.
+        &#34;&#34;&#34;
+        return self._modifiers
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;Return regex string representation.&#34;&#34;&#34;
+        return &#34;&#34;.join(self._parts)
+
+    @beartype
+    def _add(self, value: Union[str, List[str]]) -&gt; Verbex:
+        &#34;&#34;&#34;
+        Append a transformed value to internal expression to be compiled.
+
+        As possible, this method should be &#34;private&#34;.
+        &#34;&#34;&#34;
+        if isinstance(value, list):
+            self._parts.extend(value)
+        else:
+            self._parts.append(value)
+        return self
+
+    def regex(self) -&gt; Pattern[str]:
+        &#34;&#34;&#34;Get a regular expression object.&#34;&#34;&#34;
+        return re.compile(
+            str(self),
+            self._modifiers,
+        )
+
+    # allow VerbexEscapedCharClassOrSpecial
+
+    @re_escape
+    @beartype
+    def _capture_group_with_name(
+        self,
+        name: str,
+        text: VerbexEscapedCharClassOrSpecial,
+    ) -&gt; Verbex:
+        return self._add(f&#34;(?&lt;{name}&gt;{str(text)})&#34;)
+
+    @re_escape
+    @beartype
+    def _capture_group_without_name(
+        self,
+        text: VerbexEscapedCharClassOrSpecial,
+    ) -&gt; Verbex:
+        return self._add(f&#34;({str(text)})&#34;)
+
+    @re_escape
+    @beartype
+    def capture_group(
+        self,
+        /,
+        name_or_text: Union[Optional[str], VerbexEscapedCharClassOrSpecial] = None,
+        text: Optional[VerbexEscapedCharClassOrSpecial] = None,
+    ) -&gt; Verbex:
+        &#34;&#34;&#34;Create a capture group.
+
+        Name is optional if not specified then the first argument is the text.
+
+        Keyword Arguments:
+            name_or_text -- The name of the group / text to search for (default: {None})
+            text -- The text to search for (default: {None})
+
+        Raises:
+            ValueError: If name is specified then text must be as well.
+
+        Returns:
+            Verbex with added capture group.
+        &#34;&#34;&#34;
+        if name_or_text is not None:
+            if text is None:
+                _text = name_or_text
+                return self._capture_group_without_name(_text)
+            if isinstance(name_or_text, str):
+                return self._capture_group_with_name(name_or_text, text)
+        raise ValueError(&#34;text must be specified with optional name&#34;)
+
+    @re_escape
+    @beartype
+    def OR(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:  # noqa N802
+        &#34;&#34;&#34;`or` is a python keyword so we use `OR` instead.
+
+        Arguments:
+            text -- Text to find or a Verbex object.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(&#34;|&#34;).find(text)
+
+    @re_escape
+    @beartype
+    def zero_or_more(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object zero or more times.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)})*&#34;)
+
+    @re_escape
+    @beartype
+    def one_or_more(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object one or more times.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)})+&#34;)
+
+    @re_escape
+    @beartype
+    def n_times(
+        self,
+        text: VerbexEscapedCharClassOrSpecial,
+        n: int,  # noqa: VNE001
+    ) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object n or more times.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)}){{{n}}}&#34;)
+
+    @re_escape
+    @beartype
+    def n_times_or_more(
+        self,
+        text: VerbexEscapedCharClassOrSpecial,
+        n: int,  # noqa: VNE001
+    ) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object at least n times.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)}){{{n},}}&#34;)
+
+    @re_escape
+    @beartype
+    def n_to_m_times(
+        self,
+        text: VerbexEscapedCharClassOrSpecial,
+        n: int,  # noqa: VNE001
+        m: int,  # noqa: VNE001
+    ) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object between n and m times.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)}){{{n},{m}}}&#34;)
+
+    @re_escape
+    @beartype
+    def maybe(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Possibly find the text / Verbex object.
+
+        Arguments:
+            text -- The text / Verbex object to possibly find.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)})?&#34;)
+
+    @re_escape
+    @beartype
+    def find(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(str(text))
+
+    @re_escape
+    @beartype
+    def then(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Synonym for find.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self.find(text)
+
+    @re_escape
+    @beartype
+    def followed_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Match if string is followed by text.
+
+        Positive lookahead
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?={text})&#34;)
+
+    @re_escape
+    @beartype
+    def not_followed_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Match if string is not followed by text.
+
+        Negative lookahead
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?!{text})&#34;)
+
+    @re_escape
+    @beartype
+    def preceded_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Match if string is not preceded by text.
+
+        Positive lookbehind
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?&lt;={text})&#34;)
+
+    @re_escape
+    @beartype
+    def not_preceded_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Match if string is not preceded by text.
+
+        Negative Lookbehind
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?&lt;!{text})&#34;)
+
+    # only allow CharclassOrChars
+
+    @re_escape
+    @beartype
+    def any_of(self, chargroup: CharClassOrChars) -&gt; Verbex:
+        &#34;&#34;&#34;Find anything in this group of chars or char class.
+
+        Arguments:
+            text -- The characters to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:[{chargroup}])&#34;)
+
+    @re_escape
+    @beartype
+    def not_any_of(self, text: CharClassOrChars) -&gt; Verbex:
+        &#34;&#34;&#34;Find anything but this group of chars or char class.
+
+        Arguments:
+            text -- The characters to not look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:[^{text}])&#34;)
+
+    @re_escape
+    def anything_but(self, chargroup: EscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Find anything one or more times but this group of chars or char class.
+
+        Arguments:
+            text -- The characters to not look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;[^{chargroup}]+&#34;)
+
+    # no text input
+
+    def start_of_line(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find the start of the line.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self.find(SpecialChar.START_OF_LINE)
+
+    def end_of_line(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find the end of the line.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self.find(SpecialChar.END_OF_LINE)
+
+    def line_break(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find a line break.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self.find(SpecialChar.LINEBREAK)
+
+    def tab(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find a tab.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self.find(SpecialChar.TAB)
+
+    def anything(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find anything one or more time.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(&#34;.+&#34;)
+
+    def as_few(self) -&gt; Verbex:
+        &#34;&#34;&#34;Modify previous search to not be greedy.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(&#34;?&#34;)
+
+    @beartype
+    def number_range(self, start: int, end: int) -&gt; Verbex:
+        &#34;&#34;&#34;Generate a range of numbers.
+
+        Arguments:
+            start -- Start of the range
+            end -- End of the range
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(&#34;(?:&#34; + &#34;|&#34;.join(str(i) for i in range(start, end + 1)) + &#34;)&#34;)
+
+    @beartype
+    def letter_range(self, start: Char, end: Char) -&gt; Verbex:
+        &#34;&#34;&#34;Generate a range of letters.
+
+        Arguments:
+            start -- Start of the range
+            end -- End of the range
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;[{start}-{end}]&#34;)
+
+    def word(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find a word on word boundary.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(&#34;(\\b\\w+\\b)&#34;)
+
+    # # --------------- modifiers ------------------------
+
+    def with_any_case(self) -&gt; Verbex:
+        &#34;&#34;&#34;Modify Verbex object to be case insensitive.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        self._modifiers |= re.IGNORECASE
+        return self
+
+    def search_by_line(self) -&gt; Verbex:
+        &#34;&#34;&#34;Search each line, ^ and $ match begining and end of line respectively.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        self._modifiers |= re.MULTILINE
+        return self
+
+    def with_ascii(self) -&gt; Verbex:
+        &#34;&#34;&#34;Match ascii instead of unicode.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        self._modifiers |= re.ASCII
+        return self
+
+
+# left over notes from original version
+# def __getattr__(self, attr):
+#     &#34;&#34;&#34; any other function will be sent to the regex object &#34;&#34;&#34;
+#     regex = self.regex()
+#     return getattr(regex, attr)
+
+# def replace(self, string, repl):
+#     return self.sub(repl, string)
+
+
+if __name__ == &#34;__main__&#34;:
+    pass</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="verbex.verbex.re_escape"><code class="name flex">
+<span>def <span class="ident">re_escape</span></span>(<span>func: Callable[P, R]) ‑> collections.abc.Callable[~P, ~R]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Automatically escape any string parameters as EscapedText.</p>
+<h2 id="arguments">Arguments</h2>
+<p>func &ndash; The function to decorate.</p>
+<h2 id="returns">Returns</h2>
+<p>The decorated function.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def re_escape(func: Callable[P, R]) -&gt; Callable[P, R]:
+    &#34;&#34;&#34;Automatically escape any string parameters as EscapedText.
+
+    Arguments:
+        func -- The function to decorate.
+
+    Returns:
+        The decorated function.
+    &#34;&#34;&#34;
+
+    @wraps(func)
+    def inner(*args: P.args, **kwargs: P.kwargs) -&gt; R:  # type: ignore
+        escaped_args: List[Any] = []
+        escaped_kwargs: Dict[str, Any] = {}
+        for arg in cast(HasIter, args):
+            if not isinstance(arg, EscapedText) and isinstance(arg, str):
+                escaped_args.append(EscapedText(arg))
+            else:
+                escaped_args.append(arg)
+        arg_k: str
+        arg_v: Any
+        for arg_k, arg_v in cast(HasItems, kwargs).items():
+            if not isinstance(arg_v, EscapedText) and isinstance(arg_v, str):
+                escaped_kwargs[arg_k] = EscapedText(str(arg_v))
+            else:
+                escaped_kwargs[arg_k] = arg_v
+        return func(*escaped_args, **escaped_kwargs)  # type: ignore
+
+    return inner</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="verbex.verbex.CharClass"><code class="flex name class">
+<span>class <span class="ident">CharClass</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enum of character classes in regex.</p>
+<h2 id="arguments">Arguments</h2>
+<p>Enum &ndash; Extends the Enum class.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CharClass(Enum):
+    &#34;&#34;&#34;Enum of character classes in regex.
+
+    Arguments:
+        Enum -- Extends the Enum class.
+    &#34;&#34;&#34;
+
+    DIGIT = &#34;\\d&#34;
+    LETTER = &#34;\\w&#34;
+    UPPERCASE_LETTER = &#34;\\u&#34;
+    LOWERCASE_LETTER = &#34;\\l&#34;
+    WHITESPACE = &#34;\\s&#34;
+    TAB = &#34;\\t&#34;
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;To string method based on Enum value.
+
+        Returns:
+            value of Enum
+        &#34;&#34;&#34;
+        return self.value</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="verbex.verbex.CharClass.DIGIT"><code class="name">var <span class="ident">DIGIT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="verbex.verbex.CharClass.LETTER"><code class="name">var <span class="ident">LETTER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="verbex.verbex.CharClass.LOWERCASE_LETTER"><code class="name">var <span class="ident">LOWERCASE_LETTER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="verbex.verbex.CharClass.TAB"><code class="name">var <span class="ident">TAB</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="verbex.verbex.CharClass.UPPERCASE_LETTER"><code class="name">var <span class="ident">UPPERCASE_LETTER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="verbex.verbex.CharClass.WHITESPACE"><code class="name">var <span class="ident">WHITESPACE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="verbex.verbex.EscapedText"><code class="flex name class">
+<span>class <span class="ident">EscapedText</span></span>
+<span>(</span><span>value: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Text that has been escaped for regex.</p>
+<h2 id="arguments">Arguments</h2>
+<p>str &ndash; Extend the string class.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EscapedText(str):
+    &#34;&#34;&#34;Text that has been escaped for regex.
+
+    Arguments:
+        str -- Extend the string class.
+    &#34;&#34;&#34;
+
+    def __new__(cls, value: str) -&gt; EscapedText:
+        &#34;&#34;&#34;Return a escaped regex string.
+
+        Arguments:
+            value -- the string to escape
+
+        Returns:
+            _description_
+        &#34;&#34;&#34;
+        return str.__new__(cls, re.escape(value))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.str</li>
+</ul>
+</dd>
+<dt id="verbex.verbex.HasItems"><code class="flex name class">
+<span>class <span class="ident">HasItems</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Workaround for mypy P.kwargs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@runtime_checkable
+class HasItems(Protocol):
+    &#34;&#34;&#34;Workaround for mypy P.kwargs.&#34;&#34;&#34;
+
+    def items(self) -&gt; Tuple[str, Any]:
+        &#34;&#34;&#34;Object has items method.
+
+        Returns:
+            The dict of items.
+        &#34;&#34;&#34;
+        ...</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="verbex.verbex.HasItems.items"><code class="name flex">
+<span>def <span class="ident">items</span></span>(<span>self) ‑> tuple[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Object has items method.</p>
+<h2 id="returns">Returns</h2>
+<p>The dict of items.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def items(self) -&gt; Tuple[str, Any]:
+    &#34;&#34;&#34;Object has items method.
+
+    Returns:
+        The dict of items.
+    &#34;&#34;&#34;
+    ...</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="verbex.verbex.HasIter"><code class="flex name class">
+<span>class <span class="ident">HasIter</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Workaround for mypy P.args.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@runtime_checkable
+class HasIter(Protocol):
+    &#34;&#34;&#34;Workaround for mypy P.args.&#34;&#34;&#34;
+
+    def __iter__(self) -&gt; Iterator[Any]:
+        &#34;&#34;&#34;Object can be iterated.
+
+        Yields:
+            Next object.
+        &#34;&#34;&#34;
+        ...</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+</dd>
+<dt id="verbex.verbex.SpecialChar"><code class="flex name class">
+<span>class <span class="ident">SpecialChar</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enum of special charaters, shorthand.</p>
+<h2 id="arguments">Arguments</h2>
+<p>Enum &ndash; Extends the Enum class.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SpecialChar(Enum):
+    &#34;&#34;&#34;Enum of special charaters, shorthand.
+
+    Arguments:
+        Enum -- Extends the Enum class.
+    &#34;&#34;&#34;
+
+    # does not work  / should not be used in [ ]
+    LINEBREAK = &#34;(\\n|(\\r\\n))&#34;
+    START_OF_LINE = &#34;^&#34;
+    END_OF_LINE = &#34;$&#34;
+    TAB = &#34;\t&#34;
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;To string for special chars enum.
+
+        Returns:
+            Return value of enum as string.
+        &#34;&#34;&#34;
+        return self.value</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="verbex.verbex.SpecialChar.END_OF_LINE"><code class="name">var <span class="ident">END_OF_LINE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="verbex.verbex.SpecialChar.LINEBREAK"><code class="name">var <span class="ident">LINEBREAK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="verbex.verbex.SpecialChar.START_OF_LINE"><code class="name">var <span class="ident">START_OF_LINE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="verbex.verbex.SpecialChar.TAB"><code class="name">var <span class="ident">TAB</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="verbex.verbex.Verbex"><code class="flex name class">
+<span>class <span class="ident">Verbex</span></span>
+<span>(</span><span>modifiers: re.RegexFlag = )</span>
+</code></dt>
+<dd>
+<div class="desc"><p>VerbalExpressions class.</p>
+<p>the following methods do not try to match the original js lib!</p>
+<p>Create a Verbex object; setting any needed flags.</p>
+<p>Keyword Arguments:
+modifiers &ndash; Regex modifying flags (default: {re.RegexFlag(0)})</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Verbex:
+    &#34;&#34;&#34;
+    VerbalExpressions class.
+
+    the following methods do not try to match the original js lib!
+    &#34;&#34;&#34;
+
+    EMPTY_REGEX_FLAG = re.RegexFlag(0)
+
+    @re_escape
+    @beartype
+    def __init__(self, modifiers: re.RegexFlag = EMPTY_REGEX_FLAG):
+        &#34;&#34;&#34;Create a Verbex object; setting any needed flags.
+
+        Keyword Arguments:
+            modifiers -- Regex modifying flags (default: {re.RegexFlag(0)})
+        &#34;&#34;&#34;
+        # self._parts: List[str] = [text]
+        self._parts: List[str] = []
+        self._modifiers = modifiers
+
+    @property
+    def modifiers(self) -&gt; re.RegexFlag:
+        &#34;&#34;&#34;Return the modifiers for this Verbex object.
+
+        Returns:
+            The modifiers applied to this object.
+        &#34;&#34;&#34;
+        return self._modifiers
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;Return regex string representation.&#34;&#34;&#34;
+        return &#34;&#34;.join(self._parts)
+
+    @beartype
+    def _add(self, value: Union[str, List[str]]) -&gt; Verbex:
+        &#34;&#34;&#34;
+        Append a transformed value to internal expression to be compiled.
+
+        As possible, this method should be &#34;private&#34;.
+        &#34;&#34;&#34;
+        if isinstance(value, list):
+            self._parts.extend(value)
+        else:
+            self._parts.append(value)
+        return self
+
+    def regex(self) -&gt; Pattern[str]:
+        &#34;&#34;&#34;Get a regular expression object.&#34;&#34;&#34;
+        return re.compile(
+            str(self),
+            self._modifiers,
+        )
+
+    # allow VerbexEscapedCharClassOrSpecial
+
+    @re_escape
+    @beartype
+    def _capture_group_with_name(
+        self,
+        name: str,
+        text: VerbexEscapedCharClassOrSpecial,
+    ) -&gt; Verbex:
+        return self._add(f&#34;(?&lt;{name}&gt;{str(text)})&#34;)
+
+    @re_escape
+    @beartype
+    def _capture_group_without_name(
+        self,
+        text: VerbexEscapedCharClassOrSpecial,
+    ) -&gt; Verbex:
+        return self._add(f&#34;({str(text)})&#34;)
+
+    @re_escape
+    @beartype
+    def capture_group(
+        self,
+        /,
+        name_or_text: Union[Optional[str], VerbexEscapedCharClassOrSpecial] = None,
+        text: Optional[VerbexEscapedCharClassOrSpecial] = None,
+    ) -&gt; Verbex:
+        &#34;&#34;&#34;Create a capture group.
+
+        Name is optional if not specified then the first argument is the text.
+
+        Keyword Arguments:
+            name_or_text -- The name of the group / text to search for (default: {None})
+            text -- The text to search for (default: {None})
+
+        Raises:
+            ValueError: If name is specified then text must be as well.
+
+        Returns:
+            Verbex with added capture group.
+        &#34;&#34;&#34;
+        if name_or_text is not None:
+            if text is None:
+                _text = name_or_text
+                return self._capture_group_without_name(_text)
+            if isinstance(name_or_text, str):
+                return self._capture_group_with_name(name_or_text, text)
+        raise ValueError(&#34;text must be specified with optional name&#34;)
+
+    @re_escape
+    @beartype
+    def OR(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:  # noqa N802
+        &#34;&#34;&#34;`or` is a python keyword so we use `OR` instead.
+
+        Arguments:
+            text -- Text to find or a Verbex object.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(&#34;|&#34;).find(text)
+
+    @re_escape
+    @beartype
+    def zero_or_more(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object zero or more times.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)})*&#34;)
+
+    @re_escape
+    @beartype
+    def one_or_more(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object one or more times.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)})+&#34;)
+
+    @re_escape
+    @beartype
+    def n_times(
+        self,
+        text: VerbexEscapedCharClassOrSpecial,
+        n: int,  # noqa: VNE001
+    ) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object n or more times.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)}){{{n}}}&#34;)
+
+    @re_escape
+    @beartype
+    def n_times_or_more(
+        self,
+        text: VerbexEscapedCharClassOrSpecial,
+        n: int,  # noqa: VNE001
+    ) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object at least n times.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)}){{{n},}}&#34;)
+
+    @re_escape
+    @beartype
+    def n_to_m_times(
+        self,
+        text: VerbexEscapedCharClassOrSpecial,
+        n: int,  # noqa: VNE001
+        m: int,  # noqa: VNE001
+    ) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object between n and m times.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)}){{{n},{m}}}&#34;)
+
+    @re_escape
+    @beartype
+    def maybe(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Possibly find the text / Verbex object.
+
+        Arguments:
+            text -- The text / Verbex object to possibly find.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:{str(text)})?&#34;)
+
+    @re_escape
+    @beartype
+    def find(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Find the text or Verbex object.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(str(text))
+
+    @re_escape
+    @beartype
+    def then(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Synonym for find.
+
+        Arguments:
+            text -- The text / Verbex object to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self.find(text)
+
+    @re_escape
+    @beartype
+    def followed_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Match if string is followed by text.
+
+        Positive lookahead
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?={text})&#34;)
+
+    @re_escape
+    @beartype
+    def not_followed_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Match if string is not followed by text.
+
+        Negative lookahead
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?!{text})&#34;)
+
+    @re_escape
+    @beartype
+    def preceded_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Match if string is not preceded by text.
+
+        Positive lookbehind
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?&lt;={text})&#34;)
+
+    @re_escape
+    @beartype
+    def not_preceded_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Match if string is not preceded by text.
+
+        Negative Lookbehind
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?&lt;!{text})&#34;)
+
+    # only allow CharclassOrChars
+
+    @re_escape
+    @beartype
+    def any_of(self, chargroup: CharClassOrChars) -&gt; Verbex:
+        &#34;&#34;&#34;Find anything in this group of chars or char class.
+
+        Arguments:
+            text -- The characters to look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:[{chargroup}])&#34;)
+
+    @re_escape
+    @beartype
+    def not_any_of(self, text: CharClassOrChars) -&gt; Verbex:
+        &#34;&#34;&#34;Find anything but this group of chars or char class.
+
+        Arguments:
+            text -- The characters to not look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;(?:[^{text}])&#34;)
+
+    @re_escape
+    def anything_but(self, chargroup: EscapedCharClassOrSpecial) -&gt; Verbex:
+        &#34;&#34;&#34;Find anything one or more times but this group of chars or char class.
+
+        Arguments:
+            text -- The characters to not look for.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;[^{chargroup}]+&#34;)
+
+    # no text input
+
+    def start_of_line(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find the start of the line.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self.find(SpecialChar.START_OF_LINE)
+
+    def end_of_line(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find the end of the line.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self.find(SpecialChar.END_OF_LINE)
+
+    def line_break(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find a line break.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self.find(SpecialChar.LINEBREAK)
+
+    def tab(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find a tab.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self.find(SpecialChar.TAB)
+
+    def anything(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find anything one or more time.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(&#34;.+&#34;)
+
+    def as_few(self) -&gt; Verbex:
+        &#34;&#34;&#34;Modify previous search to not be greedy.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(&#34;?&#34;)
+
+    @beartype
+    def number_range(self, start: int, end: int) -&gt; Verbex:
+        &#34;&#34;&#34;Generate a range of numbers.
+
+        Arguments:
+            start -- Start of the range
+            end -- End of the range
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(&#34;(?:&#34; + &#34;|&#34;.join(str(i) for i in range(start, end + 1)) + &#34;)&#34;)
+
+    @beartype
+    def letter_range(self, start: Char, end: Char) -&gt; Verbex:
+        &#34;&#34;&#34;Generate a range of letters.
+
+        Arguments:
+            start -- Start of the range
+            end -- End of the range
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(f&#34;[{start}-{end}]&#34;)
+
+    def word(self) -&gt; Verbex:
+        &#34;&#34;&#34;Find a word on word boundary.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        return self._add(&#34;(\\b\\w+\\b)&#34;)
+
+    # # --------------- modifiers ------------------------
+
+    def with_any_case(self) -&gt; Verbex:
+        &#34;&#34;&#34;Modify Verbex object to be case insensitive.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        self._modifiers |= re.IGNORECASE
+        return self
+
+    def search_by_line(self) -&gt; Verbex:
+        &#34;&#34;&#34;Search each line, ^ and $ match begining and end of line respectively.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        self._modifiers |= re.MULTILINE
+        return self
+
+    def with_ascii(self) -&gt; Verbex:
+        &#34;&#34;&#34;Match ascii instead of unicode.
+
+        Returns:
+            Modified Verbex object.
+        &#34;&#34;&#34;
+        self._modifiers |= re.ASCII
+        return self</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="verbex.verbex.Verbex.EMPTY_REGEX_FLAG"><code class="name">var <span class="ident">EMPTY_REGEX_FLAG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="verbex.verbex.Verbex.modifiers"><code class="name">var <span class="ident">modifiers</span> : re.RegexFlag</code></dt>
+<dd>
+<div class="desc"><p>Return the modifiers for this Verbex object.</p>
+<h2 id="returns">Returns</h2>
+<p>The modifiers applied to this object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def modifiers(self) -&gt; re.RegexFlag:
+    &#34;&#34;&#34;Return the modifiers for this Verbex object.
+
+    Returns:
+        The modifiers applied to this object.
+    &#34;&#34;&#34;
+    return self._modifiers</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="verbex.verbex.Verbex.OR"><code class="name flex">
+<span>def <span class="ident">OR</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p><code>or</code> is a python keyword so we use <code>OR</code> instead.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; Text to find or a Verbex object.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def OR(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:  # noqa N802
+    &#34;&#34;&#34;`or` is a python keyword so we use `OR` instead.
+
+    Arguments:
+        text -- Text to find or a Verbex object.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(&#34;|&#34;).find(text)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.any_of"><code class="name flex">
+<span>def <span class="ident">any_of</span></span>(<span>self, chargroup: Union[str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find anything in this group of chars or char class.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The characters to look for.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def any_of(self, chargroup: CharClassOrChars) -&gt; Verbex:
+    &#34;&#34;&#34;Find anything in this group of chars or char class.
+
+    Arguments:
+        text -- The characters to look for.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?:[{chargroup}])&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.anything"><code class="name flex">
+<span>def <span class="ident">anything</span></span>(<span>self) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find anything one or more time.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def anything(self) -&gt; Verbex:
+    &#34;&#34;&#34;Find anything one or more time.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(&#34;.+&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.anything_but"><code class="name flex">
+<span>def <span class="ident">anything_but</span></span>(<span>self, chargroup: EscapedCharClassOrSpecial) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find anything one or more times but this group of chars or char class.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The characters to not look for.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+def anything_but(self, chargroup: EscapedCharClassOrSpecial) -&gt; Verbex:
+    &#34;&#34;&#34;Find anything one or more times but this group of chars or char class.
+
+    Arguments:
+        text -- The characters to not look for.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;[^{chargroup}]+&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.as_few"><code class="name flex">
+<span>def <span class="ident">as_few</span></span>(<span>self) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Modify previous search to not be greedy.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def as_few(self) -&gt; Verbex:
+    &#34;&#34;&#34;Modify previous search to not be greedy.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(&#34;?&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.capture_group"><code class="name flex">
+<span>def <span class="ident">capture_group</span></span>(<span>self, /, name_or_text: Union[str, ForwardRef(None), ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>] = None, text: Union[str, ForwardRef(None), ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>] = None) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a capture group.</p>
+<p>Name is optional if not specified then the first argument is the text.</p>
+<p>Keyword Arguments:
+name_or_text &ndash; The name of the group / text to search for (default: {None})
+text &ndash; The text to search for (default: {None})</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If name is specified then text must be as well.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Verbex with added capture group.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def capture_group(
+    self,
+    /,
+    name_or_text: Union[Optional[str], VerbexEscapedCharClassOrSpecial] = None,
+    text: Optional[VerbexEscapedCharClassOrSpecial] = None,
+) -&gt; Verbex:
+    &#34;&#34;&#34;Create a capture group.
+
+    Name is optional if not specified then the first argument is the text.
+
+    Keyword Arguments:
+        name_or_text -- The name of the group / text to search for (default: {None})
+        text -- The text to search for (default: {None})
+
+    Raises:
+        ValueError: If name is specified then text must be as well.
+
+    Returns:
+        Verbex with added capture group.
+    &#34;&#34;&#34;
+    if name_or_text is not None:
+        if text is None:
+            _text = name_or_text
+            return self._capture_group_without_name(_text)
+        if isinstance(name_or_text, str):
+            return self._capture_group_with_name(name_or_text, text)
+    raise ValueError(&#34;text must be specified with optional name&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.end_of_line"><code class="name flex">
+<span>def <span class="ident">end_of_line</span></span>(<span>self) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the end of the line.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def end_of_line(self) -&gt; Verbex:
+    &#34;&#34;&#34;Find the end of the line.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self.find(SpecialChar.END_OF_LINE)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.find"><code class="name flex">
+<span>def <span class="ident">find</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the text or Verbex object.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The text / Verbex object to look for.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def find(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+    &#34;&#34;&#34;Find the text or Verbex object.
+
+    Arguments:
+        text -- The text / Verbex object to look for.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(str(text))</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.followed_by"><code class="name flex">
+<span>def <span class="ident">followed_by</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Match if string is followed by text.</p>
+<p>Positive lookahead</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def followed_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+    &#34;&#34;&#34;Match if string is followed by text.
+
+    Positive lookahead
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?={text})&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.letter_range"><code class="name flex">
+<span>def <span class="ident">letter_range</span></span>(<span>self, start: typing.Annotated[str, Is[_string_len_is_1]], end: typing.Annotated[str, Is[_string_len_is_1]]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate a range of letters.</p>
+<h2 id="arguments">Arguments</h2>
+<p>start &ndash; Start of the range
+end &ndash; End of the range</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@beartype
+def letter_range(self, start: Char, end: Char) -&gt; Verbex:
+    &#34;&#34;&#34;Generate a range of letters.
+
+    Arguments:
+        start -- Start of the range
+        end -- End of the range
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;[{start}-{end}]&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.line_break"><code class="name flex">
+<span>def <span class="ident">line_break</span></span>(<span>self) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find a line break.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def line_break(self) -&gt; Verbex:
+    &#34;&#34;&#34;Find a line break.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self.find(SpecialChar.LINEBREAK)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.maybe"><code class="name flex">
+<span>def <span class="ident">maybe</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Possibly find the text / Verbex object.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The text / Verbex object to possibly find.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def maybe(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+    &#34;&#34;&#34;Possibly find the text / Verbex object.
+
+    Arguments:
+        text -- The text / Verbex object to possibly find.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?:{str(text)})?&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.n_times"><code class="name flex">
+<span>def <span class="ident">n_times</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>], n: int) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the text or Verbex object n or more times.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The text / Verbex object to look for.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def n_times(
+    self,
+    text: VerbexEscapedCharClassOrSpecial,
+    n: int,  # noqa: VNE001
+) -&gt; Verbex:
+    &#34;&#34;&#34;Find the text or Verbex object n or more times.
+
+    Arguments:
+        text -- The text / Verbex object to look for.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?:{str(text)}){{{n}}}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.n_times_or_more"><code class="name flex">
+<span>def <span class="ident">n_times_or_more</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>], n: int) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the text or Verbex object at least n times.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The text / Verbex object to look for.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def n_times_or_more(
+    self,
+    text: VerbexEscapedCharClassOrSpecial,
+    n: int,  # noqa: VNE001
+) -&gt; Verbex:
+    &#34;&#34;&#34;Find the text or Verbex object at least n times.
+
+    Arguments:
+        text -- The text / Verbex object to look for.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?:{str(text)}){{{n},}}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.n_to_m_times"><code class="name flex">
+<span>def <span class="ident">n_to_m_times</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>], n: int, m: int) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the text or Verbex object between n and m times.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The text / Verbex object to look for.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def n_to_m_times(
+    self,
+    text: VerbexEscapedCharClassOrSpecial,
+    n: int,  # noqa: VNE001
+    m: int,  # noqa: VNE001
+) -&gt; Verbex:
+    &#34;&#34;&#34;Find the text or Verbex object between n and m times.
+
+    Arguments:
+        text -- The text / Verbex object to look for.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?:{str(text)}){{{n},{m}}}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.not_any_of"><code class="name flex">
+<span>def <span class="ident">not_any_of</span></span>(<span>self, text: Union[str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find anything but this group of chars or char class.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The characters to not look for.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def not_any_of(self, text: CharClassOrChars) -&gt; Verbex:
+    &#34;&#34;&#34;Find anything but this group of chars or char class.
+
+    Arguments:
+        text -- The characters to not look for.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?:[^{text}])&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.not_followed_by"><code class="name flex">
+<span>def <span class="ident">not_followed_by</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Match if string is not followed by text.</p>
+<p>Negative lookahead</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def not_followed_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+    &#34;&#34;&#34;Match if string is not followed by text.
+
+    Negative lookahead
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?!{text})&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.not_preceded_by"><code class="name flex">
+<span>def <span class="ident">not_preceded_by</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Match if string is not preceded by text.</p>
+<p>Negative Lookbehind</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def not_preceded_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+    &#34;&#34;&#34;Match if string is not preceded by text.
+
+    Negative Lookbehind
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?&lt;!{text})&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.number_range"><code class="name flex">
+<span>def <span class="ident">number_range</span></span>(<span>self, start: int, end: int) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate a range of numbers.</p>
+<h2 id="arguments">Arguments</h2>
+<p>start &ndash; Start of the range
+end &ndash; End of the range</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@beartype
+def number_range(self, start: int, end: int) -&gt; Verbex:
+    &#34;&#34;&#34;Generate a range of numbers.
+
+    Arguments:
+        start -- Start of the range
+        end -- End of the range
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(&#34;(?:&#34; + &#34;|&#34;.join(str(i) for i in range(start, end + 1)) + &#34;)&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.one_or_more"><code class="name flex">
+<span>def <span class="ident">one_or_more</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the text or Verbex object one or more times.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The text / Verbex object to look for.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def one_or_more(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+    &#34;&#34;&#34;Find the text or Verbex object one or more times.
+
+    Arguments:
+        text -- The text / Verbex object to look for.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?:{str(text)})+&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.preceded_by"><code class="name flex">
+<span>def <span class="ident">preceded_by</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Match if string is not preceded by text.</p>
+<p>Positive lookbehind</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def preceded_by(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+    &#34;&#34;&#34;Match if string is not preceded by text.
+
+    Positive lookbehind
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?&lt;={text})&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.regex"><code class="name flex">
+<span>def <span class="ident">regex</span></span>(<span>self) ‑> Pattern[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a regular expression object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def regex(self) -&gt; Pattern[str]:
+    &#34;&#34;&#34;Get a regular expression object.&#34;&#34;&#34;
+    return re.compile(
+        str(self),
+        self._modifiers,
+    )</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.search_by_line"><code class="name flex">
+<span>def <span class="ident">search_by_line</span></span>(<span>self) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Search each line, ^ and $ match begining and end of line respectively.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def search_by_line(self) -&gt; Verbex:
+    &#34;&#34;&#34;Search each line, ^ and $ match begining and end of line respectively.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    self._modifiers |= re.MULTILINE
+    return self</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.start_of_line"><code class="name flex">
+<span>def <span class="ident">start_of_line</span></span>(<span>self) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the start of the line.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_of_line(self) -&gt; Verbex:
+    &#34;&#34;&#34;Find the start of the line.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self.find(SpecialChar.START_OF_LINE)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.tab"><code class="name flex">
+<span>def <span class="ident">tab</span></span>(<span>self) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find a tab.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def tab(self) -&gt; Verbex:
+    &#34;&#34;&#34;Find a tab.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self.find(SpecialChar.TAB)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.then"><code class="name flex">
+<span>def <span class="ident">then</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Synonym for find.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The text / Verbex object to look for.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def then(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+    &#34;&#34;&#34;Synonym for find.
+
+    Arguments:
+        text -- The text / Verbex object to look for.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self.find(text)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.with_any_case"><code class="name flex">
+<span>def <span class="ident">with_any_case</span></span>(<span>self) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Modify Verbex object to be case insensitive.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def with_any_case(self) -&gt; Verbex:
+    &#34;&#34;&#34;Modify Verbex object to be case insensitive.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    self._modifiers |= re.IGNORECASE
+    return self</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.with_ascii"><code class="name flex">
+<span>def <span class="ident">with_ascii</span></span>(<span>self) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Match ascii instead of unicode.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def with_ascii(self) -&gt; Verbex:
+    &#34;&#34;&#34;Match ascii instead of unicode.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    self._modifiers |= re.ASCII
+    return self</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.word"><code class="name flex">
+<span>def <span class="ident">word</span></span>(<span>self) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find a word on word boundary.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def word(self) -&gt; Verbex:
+    &#34;&#34;&#34;Find a word on word boundary.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(&#34;(\\b\\w+\\b)&#34;)</code></pre>
+</details>
+</dd>
+<dt id="verbex.verbex.Verbex.zero_or_more"><code class="name flex">
+<span>def <span class="ident">zero_or_more</span></span>(<span>self, text: Union[ForwardRef('<a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a>'), str, <a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a>, <a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a>]) ‑> <a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the text or Verbex object zero or more times.</p>
+<h2 id="arguments">Arguments</h2>
+<p>text &ndash; The text / Verbex object to look for.</p>
+<h2 id="returns">Returns</h2>
+<p>Modified Verbex object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@re_escape
+@beartype
+def zero_or_more(self, text: VerbexEscapedCharClassOrSpecial) -&gt; Verbex:
+    &#34;&#34;&#34;Find the text or Verbex object zero or more times.
+
+    Arguments:
+        text -- The text / Verbex object to look for.
+
+    Returns:
+        Modified Verbex object.
+    &#34;&#34;&#34;
+    return self._add(f&#34;(?:{str(text)})*&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="verbex" href="index.html">verbex</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="verbex.verbex.re_escape" href="#verbex.verbex.re_escape">re_escape</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="verbex.verbex.CharClass" href="#verbex.verbex.CharClass">CharClass</a></code></h4>
+<ul class="two-column">
+<li><code><a title="verbex.verbex.CharClass.DIGIT" href="#verbex.verbex.CharClass.DIGIT">DIGIT</a></code></li>
+<li><code><a title="verbex.verbex.CharClass.LETTER" href="#verbex.verbex.CharClass.LETTER">LETTER</a></code></li>
+<li><code><a title="verbex.verbex.CharClass.LOWERCASE_LETTER" href="#verbex.verbex.CharClass.LOWERCASE_LETTER">LOWERCASE_LETTER</a></code></li>
+<li><code><a title="verbex.verbex.CharClass.TAB" href="#verbex.verbex.CharClass.TAB">TAB</a></code></li>
+<li><code><a title="verbex.verbex.CharClass.UPPERCASE_LETTER" href="#verbex.verbex.CharClass.UPPERCASE_LETTER">UPPERCASE_LETTER</a></code></li>
+<li><code><a title="verbex.verbex.CharClass.WHITESPACE" href="#verbex.verbex.CharClass.WHITESPACE">WHITESPACE</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="verbex.verbex.EscapedText" href="#verbex.verbex.EscapedText">EscapedText</a></code></h4>
+</li>
+<li>
+<h4><code><a title="verbex.verbex.HasItems" href="#verbex.verbex.HasItems">HasItems</a></code></h4>
+<ul class="">
+<li><code><a title="verbex.verbex.HasItems.items" href="#verbex.verbex.HasItems.items">items</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="verbex.verbex.HasIter" href="#verbex.verbex.HasIter">HasIter</a></code></h4>
+</li>
+<li>
+<h4><code><a title="verbex.verbex.SpecialChar" href="#verbex.verbex.SpecialChar">SpecialChar</a></code></h4>
+<ul class="">
+<li><code><a title="verbex.verbex.SpecialChar.END_OF_LINE" href="#verbex.verbex.SpecialChar.END_OF_LINE">END_OF_LINE</a></code></li>
+<li><code><a title="verbex.verbex.SpecialChar.LINEBREAK" href="#verbex.verbex.SpecialChar.LINEBREAK">LINEBREAK</a></code></li>
+<li><code><a title="verbex.verbex.SpecialChar.START_OF_LINE" href="#verbex.verbex.SpecialChar.START_OF_LINE">START_OF_LINE</a></code></li>
+<li><code><a title="verbex.verbex.SpecialChar.TAB" href="#verbex.verbex.SpecialChar.TAB">TAB</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="verbex.verbex.Verbex" href="#verbex.verbex.Verbex">Verbex</a></code></h4>
+<ul class="two-column">
+<li><code><a title="verbex.verbex.Verbex.EMPTY_REGEX_FLAG" href="#verbex.verbex.Verbex.EMPTY_REGEX_FLAG">EMPTY_REGEX_FLAG</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.OR" href="#verbex.verbex.Verbex.OR">OR</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.any_of" href="#verbex.verbex.Verbex.any_of">any_of</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.anything" href="#verbex.verbex.Verbex.anything">anything</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.anything_but" href="#verbex.verbex.Verbex.anything_but">anything_but</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.as_few" href="#verbex.verbex.Verbex.as_few">as_few</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.capture_group" href="#verbex.verbex.Verbex.capture_group">capture_group</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.end_of_line" href="#verbex.verbex.Verbex.end_of_line">end_of_line</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.find" href="#verbex.verbex.Verbex.find">find</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.followed_by" href="#verbex.verbex.Verbex.followed_by">followed_by</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.letter_range" href="#verbex.verbex.Verbex.letter_range">letter_range</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.line_break" href="#verbex.verbex.Verbex.line_break">line_break</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.maybe" href="#verbex.verbex.Verbex.maybe">maybe</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.modifiers" href="#verbex.verbex.Verbex.modifiers">modifiers</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.n_times" href="#verbex.verbex.Verbex.n_times">n_times</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.n_times_or_more" href="#verbex.verbex.Verbex.n_times_or_more">n_times_or_more</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.n_to_m_times" href="#verbex.verbex.Verbex.n_to_m_times">n_to_m_times</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.not_any_of" href="#verbex.verbex.Verbex.not_any_of">not_any_of</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.not_followed_by" href="#verbex.verbex.Verbex.not_followed_by">not_followed_by</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.not_preceded_by" href="#verbex.verbex.Verbex.not_preceded_by">not_preceded_by</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.number_range" href="#verbex.verbex.Verbex.number_range">number_range</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.one_or_more" href="#verbex.verbex.Verbex.one_or_more">one_or_more</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.preceded_by" href="#verbex.verbex.Verbex.preceded_by">preceded_by</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.regex" href="#verbex.verbex.Verbex.regex">regex</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.search_by_line" href="#verbex.verbex.Verbex.search_by_line">search_by_line</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.start_of_line" href="#verbex.verbex.Verbex.start_of_line">start_of_line</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.tab" href="#verbex.verbex.Verbex.tab">tab</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.then" href="#verbex.verbex.Verbex.then">then</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.with_any_case" href="#verbex.verbex.Verbex.with_any_case">with_any_case</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.with_ascii" href="#verbex.verbex.Verbex.with_ascii">with_ascii</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.word" href="#verbex.verbex.Verbex.word">word</a></code></li>
+<li><code><a title="verbex.verbex.Verbex.zero_or_more" href="#verbex.verbex.Verbex.zero_or_more">zero_or_more</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

@@ -7,7 +7,7 @@ long_description = (SCRIPT_ROOT / "README.md").read_text()
 
 setup(
     name="Verbex",
-    version="1.0.2",
+    version="1.0.3",
     description=(
         "Make difficult regular expressions easy! Python fork based on of the awesome"
         " VerbalExpressions repo - https://github.com/jehna/VerbalExpressions"
@@ -19,7 +19,7 @@ setup(
         " Raghuram, Kharms, Richard Broderick"
     ),
     license="GPLv3",
-    url="https://github.com/VerbalExpressions/PythonVerbalExpressions",
+    url="https://github.com/rbroderi/Verbex",
     test_suite="tests",
     packages=["verbex"],
     classifiers=[
