@@ -7,7 +7,7 @@ long_description = (SCRIPT_ROOT / "README.md").read_text()
 
 setup(
     name="Verbex",
-    version="1.0.0",
+    version="1.0.1",
     description=(
         "Make difficult regular expressions easy! Python fork based on of the awesome"
         " VerbalExpressions repo - https://github.com/jehna/VerbalExpressions"
