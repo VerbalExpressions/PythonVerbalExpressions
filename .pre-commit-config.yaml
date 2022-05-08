@@ -213,3 +213,4 @@ repos:
         pass_filenames: false
         additional_dependencies:
           - beartype
+        stages: [post-commit]
