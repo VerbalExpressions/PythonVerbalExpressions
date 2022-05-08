@@ -1,0 +1,3 @@
+include verbex/py.typed
+include LICENSE.TXT
+include GPLv3_LICESNSE.TXT
