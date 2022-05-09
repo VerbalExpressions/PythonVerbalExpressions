@@ -6,6 +6,7 @@ Verbex: Python verbal based regular expressions
 [![PyPI license](https://img.shields.io/pypi/l/verbex)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/verbex)](https://pypi.python.org/pypi/ansicolortags/)
 [![Generic badge](https://img.shields.io/badge/mypy-passed-green.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/bandit-passed-green.svg)](https://shields.io/)
 
 ## Installation
 ```bash
