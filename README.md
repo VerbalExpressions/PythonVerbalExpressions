@@ -5,9 +5,10 @@ Verbex: Python verbal based regular expressions
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 [![PyPI license](https://img.shields.io/pypi/l/verbex)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/verbex)](https://pypi.python.org/pypi/ansicolortags/)
-[![Generic badge](https://img.shields.io/badge/mypy-typed-purple.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/bandit-checked-magenta.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/flake8-linted-yellow.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/mypy-typed-purple.svg)](http://mypy-lang.org/)
+[![Generic badge](https://img.shields.io/badge/beartype-runtime_typed-cyan.svg)](https://github.com/beartype/beartype)
+[![Generic badge](https://img.shields.io/badge/bandit-checked-magenta.svg)](https://bandit.readthedocs.io/en/latest/)
+[![Generic badge](https://img.shields.io/badge/flake8-linted-yellow.svg)](https://github.com/pycqa/flake8)
 
 ## Installation
 ```bash
