@@ -12,5 +12,9 @@
         "pylance",
         "pyright",
         "Verbex"
+    ],
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--ignore=E501"
     ]
 }

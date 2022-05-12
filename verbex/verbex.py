@@ -16,7 +16,10 @@ try:
 except ImportError:
     from typing_extensions import TypeAlias, Protocol, Annotated, ParamSpec, runtime_checkable  # type: ignore # <--- if Python < 3.9.0 # noqa E501
 
-from typing import Pattern, TypeVar
+from typing import TYPE_CHECKING, Pattern, TypeVar
+
+if TYPE_CHECKING:
+    from typing import Protocol  # noqa: F811
 
 from beartype import beartype  # type: ignore
 from beartype.typing import (  # type: ignore
@@ -40,8 +43,8 @@ def _string_len_is_1(text: object) -> bool:
 Char = Annotated[str, Is[_string_len_is_1]]
 
 
-P = ParamSpec("P")  # noqa VNE001
-R = TypeVar("R")  # noqa VNE001
+P = ParamSpec("P")  # noqa: VNE001
+R = TypeVar("R")  # noqa: VNE001
 
 
 # work around for bug https://github.com/python/mypy/issues/12660
@@ -299,7 +302,7 @@ class Verbex:
 
     @re_escape
     @beartype
-    def OR(self, text: VerbexEscapedCharClassOrSpecial) -> Verbex:  # noqa N802
+    def OR(self, text: VerbexEscapedCharClassOrSpecial) -> Verbex:  # noqa: N802
         """`or` is a python keyword so we use `OR` instead.
 
         Arguments:

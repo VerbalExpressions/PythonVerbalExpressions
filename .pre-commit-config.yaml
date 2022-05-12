@@ -52,6 +52,12 @@ repos:
         name: "Python: Formating files"
         args: [--line-length=88, --preview, --safe]
         types: [file, python]
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.32.1
+    hooks:
+      - id: pyupgrade
+        name: "Python: upgrade syntax"
+        args: [--py37-plus]
   - repo: https://github.com/hadialqattan/pycln
     rev: v1.3.2
     hooks:
@@ -93,6 +99,7 @@ repos:
         # making isort line length compatible with black
           - "--max-line-length=88"
           - "--max-complexity=18"
+          - "--kwargs-max-positional-arguments=4"
         # allowing these errors now that in the past we ignored.
         # D100 Missing docstring in public module
         # D103 Missing docstring in public function
@@ -131,7 +138,13 @@ repos:
           - flake8-colors
           - flake8-tuple
           - pandas-vet
-         # - wemake-python-styleguide
+          - flake8-length
+          - flake8-assertive
+          - flake8-warnings
+          - flake8-comprehensions
+          - flake8-simplify
+          - flake8-noqa
+          - flake8-force-keyword-arguments
         exclude: "setup[.]py|conf[.]py|__init__[.]py"
         types: [file, python]
   - repo: https://github.com/asottile/add-trailing-comma

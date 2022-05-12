@@ -50,20 +50,18 @@ def main() -> int:
                 print(f"ERROR: '{module_name}' is not all lowercase with underscores")
                 return ExitCode.DATA_ERR
         # check package if exists
-        if package_name.strip() != "":
-            # check package name
-            if not re.fullmatch("[A-Za-z]+", package_name):
-                if re.fullmatch("[A-Za-z0-9]+", package_name):
-                    print(
-                        f"WARNING: '{package_name}' has numbers - allowing but note"
-                        " this is not 'strictly' to pep 8 best practices",
-                    )
-                else:
-                    print(
-                        f"ERROR: '{package_name}' is not all lowercase with no"
-                        " underscores",
-                    )
-                    return ExitCode.DATA_ERR
+        # check package name
+        if package_name.strip() != "" and not re.fullmatch("[A-Za-z]+", package_name):
+            if re.fullmatch("[A-Za-z0-9]+", package_name):
+                print(
+                    f"WARNING: '{package_name}' has numbers - allowing but note"
+                    " this is not 'strictly' to pep 8 best practices",
+                )
+            else:
+                print(
+                    f"ERROR: '{package_name}' is not all lowercase with no underscores",
+                )
+                return ExitCode.DATA_ERR
     return ExitCode.OK
 
 
