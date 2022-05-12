@@ -52,6 +52,11 @@ repos:
         name: "Python: Formating files"
         args: [--line-length=88, --preview, --safe]
         types: [file, python]
+  - repo: https://github.com/hadialqattan/pycln
+    rev: v1.3.2
+    hooks:
+      - id: pycln
+        name: "Python: remove unused imports."
   - repo: https://github.com/asottile/blacken-docs
     rev: v1.12.1
     hooks:
