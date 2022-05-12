@@ -1,0 +1,4 @@
+tox
+typing-extensions
+beartype
+importlib-metadata; python_version < '3.7'
